@@ -40,11 +40,25 @@ export default function IdeaDetailClient({
     return "bg-zinc-200 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100";
   }, [idea.status]);
 
+  const dateLabel = useMemo(() => {
+    // Ensure we display only YYYY-MM-DD (input format should be YYYY-MM-DD).
+    const d = idea.date?.trim();
+    if (!d) return "";
+    return d.length >= 10 ? d.slice(0, 10) : d;
+  }, [idea.date]);
+
   return (
     <div className="space-y-6">
       <section className="space-y-2">
-        <div className="flex items-center justify-between gap-4">
-          <h1 className="text-4xl font-bold tracking-tight">{idea.title}</h1>
+        <div className="flex items-start justify-between gap-4">
+          <h1 className="text-4xl font-bold tracking-tight">
+            {idea.title}
+            {dateLabel ? (
+              <span className="ml-3 text-sm font-medium text-zinc-500 dark:text-zinc-400">
+                {dateLabel}
+              </span>
+            ) : null}
+          </h1>
           <span
             className={[
               "rounded-full px-3 py-1 text-xs font-medium",

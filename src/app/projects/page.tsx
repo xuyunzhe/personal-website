@@ -46,7 +46,12 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
             >
               <article className="rounded-2xl border border-zinc-200 bg-white p-6 transition hover:border-zinc-300 hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700 dark:hover:bg-zinc-950">
                 <div className="flex items-start justify-between gap-4">
-                  <h3 className="text-xl font-semibold">{idea.title}</h3>
+                  <div>
+                    <h3 className="text-xl font-semibold">{idea.title}</h3>
+                    <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+                      {idea.date}
+                    </p>
+                  </div>
                   <span
                     className={[
                       "shrink-0 rounded-full px-3 py-1 text-xs font-medium",

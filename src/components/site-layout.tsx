@@ -13,16 +13,16 @@ export default function SiteLayout({ lang, children }: SiteLayoutProps) {
   return (
     <div className="min-h-screen bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
       <header className="border-b border-zinc-200 bg-white/80 backdrop-blur dark:border-zinc-800 dark:bg-zinc-900/70">
-        <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-4">
+        <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-3 px-6 py-4">
           <Link href={`/?lang=${lang}`} className="text-sm font-semibold">
             {copy.siteTitle}
           </Link>
-          <nav className="hidden gap-4 text-sm md:flex">
+          <nav className="flex w-full gap-4 overflow-x-auto whitespace-nowrap text-sm md:w-auto md:overflow-visible md:whitespace-normal">
             {copy.nav.map((item) => (
               <Link
                 key={item.href}
                 href={`${item.href}?lang=${lang}`}
-                className="text-zinc-700 transition hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-zinc-100"
+                className="shrink-0 text-zinc-700 transition hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-zinc-100"
               >
                 {item.label}
               </Link>

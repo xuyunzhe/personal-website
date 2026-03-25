@@ -12,6 +12,7 @@ type IdeaItem = {
   summary: string;
   content: string;
   status: IdeaStatus;
+  date: string; // YYYY-MM-DD
   tech?: string;
   link?: string;
 };
@@ -101,7 +102,8 @@ const zhCopy: SiteCopy = {
         title: "FocusFlow",
         summary: "详情为只读展示。你可以通过编辑项目内容并重新发布到线上更新。",
         content: "深度工作规划 + 复盘节奏的任务管理工具。",
-        status: "in_progress",
+        status: "idea",
+        date: "2026-03-01",
         tech: "Next.js / Prisma / PostgreSQL",
         link: "https://example.com/focusflow",
       },
@@ -110,6 +112,7 @@ const zhCopy: SiteCopy = {
         summary: "详情为只读展示。你可以通过编辑项目内容并重新发布到线上更新。",
         content: "把可复用 UI 片段沉淀成组件文档与检索系统。",
         status: "launched",
+        date: "2026-02-01",
         tech: "React / Tailwind CSS / Storybook",
         link: "https://example.com/design-snippets",
       },
@@ -118,6 +121,7 @@ const zhCopy: SiteCopy = {
         summary: "详情为只读展示。你可以通过编辑项目内容并重新发布到线上更新。",
         content: "支持高亮/摘录导出的轻量阅读应用。",
         status: "in_progress",
+        date: "2026-01-15",
         tech: "TypeScript / Supabase / Vercel",
         link: "https://example.com/readlite",
       },
@@ -203,7 +207,8 @@ const enCopy: SiteCopy = {
         summary:
           "Read-only details. You can update by editing the project content and redeploying.",
         content: "A task system for planning deep work and review loops.",
-        status: "in_progress",
+        status: "idea",
+        date: "2026-03-01",
         tech: "Next.js / Prisma / PostgreSQL",
         link: "https://example.com/focusflow",
       },
@@ -214,6 +219,7 @@ const enCopy: SiteCopy = {
         content:
           "A component docs and search system for reusable UI patterns.",
         status: "launched",
+        date: "2026-02-01",
         tech: "React / Tailwind CSS / Storybook",
         link: "https://example.com/design-snippets",
       },
@@ -223,6 +229,7 @@ const enCopy: SiteCopy = {
           "Read-only details. You can update by editing the project content and redeploying.",
         content: "A lightweight reading app with highlights and exportable notes.",
         status: "in_progress",
+        date: "2026-01-15",
         tech: "TypeScript / Supabase / Vercel",
         link: "https://example.com/readlite",
       },
@@ -277,7 +284,7 @@ const enCopy: SiteCopy = {
 };
 
 export function getLang(value?: string): Lang {
-  return value === "en" ? "en" : "zh";
+  return value === "zh" ? "zh" : "en";
 }
 
 export function getCopy(lang: Lang): SiteCopy {
