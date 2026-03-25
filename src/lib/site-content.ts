@@ -176,7 +176,7 @@ const zhCopy: SiteCopy = {
 };
 
 const enCopy: SiteCopy = {
-  siteTitle: "Your Name",
+  siteTitle: "XuYunZhe",
   nav: [
     { href: "/", label: "Home" },
     { href: "/projects", label: "Projects" },
@@ -186,7 +186,7 @@ const enCopy: SiteCopy = {
   hero: {
     imageSrc: "/hero-image.png",
     imageAlt: "Hero image",
-    name: "Hi, I'm Your Name",
+    name: "Hi, I'm XuYunZhe",
     role: "Product Manager / Product Ops / Indie Builder / Independent Photographer",
     intro:
       "I build clean and reliable digital products, turning complex problems into clear and useful experiences.",
@@ -279,7 +279,7 @@ const enCopy: SiteCopy = {
     emailLabel: "Email",
     locationLabel: "Location",
   },
-  footer: "© 2026 Your Name. All rights reserved.",
+  footer: "© 2026 XuYunZhe. All rights reserved.",
   langSwitchLabel: "中文",
 };
 
