@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import SiteLayout from "@/components/site-layout";
 import { getCopy, getLang } from "@/lib/site-content";
@@ -14,6 +15,24 @@ export default async function Home({ searchParams }: HomeProps) {
   return (
     <SiteLayout lang={lang}>
       <section className="space-y-6">
+        <div
+          className="relative w-full overflow-hidden border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900"
+          style={{ aspectRatio: "16 / 9" }}
+        >
+          <Image
+            src={copy.hero.imageSrc}
+            alt={copy.hero.imageAlt}
+            fill
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            quality={100}
+            unoptimized
+            className="object-cover"
+            priority
+          />
+        </div>
+        <p className="-mt-2 text-center text-xs text-zinc-500 dark:text-zinc-400">
+          拍摄于 摩尔曼斯克极夜时间
+        </p>
         <p className="text-sm font-medium uppercase tracking-wide text-zinc-500">
           {copy.hero.role}
         </p>

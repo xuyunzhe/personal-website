@@ -5,11 +5,21 @@ type NavItem = {
   label: string;
 };
 
-type ProjectItem = {
-  name: string;
-  description: string;
-  tech: string;
-  link: string;
+type IdeaStatus = "idea" | "in_progress" | "launched";
+
+type IdeaItem = {
+  title: string;
+  summary: string;
+  content: string;
+  status: IdeaStatus;
+  tech?: string;
+  link?: string;
+};
+
+type ArticleItem = {
+  title: string;
+  summary: string;
+  coverSrc: string;
 };
 
 type PostItem = {
@@ -22,6 +32,8 @@ export type SiteCopy = {
   siteTitle: string;
   nav: NavItem[];
   hero: {
+    imageSrc: string;
+    imageAlt: string;
     name: string;
     role: string;
     intro: string;
@@ -35,7 +47,13 @@ export type SiteCopy = {
   projects: {
     title: string;
     intro: string;
-    items: ProjectItem[];
+    ideas: IdeaItem[];
+    articles: ArticleItem[];
+  };
+  gallery: {
+    title: string;
+    intro: string;
+    caption: string;
   };
   blog: {
     title: string;
@@ -53,17 +71,18 @@ export type SiteCopy = {
 };
 
 const zhCopy: SiteCopy = {
-  siteTitle: "你的名字",
+  siteTitle: "徐赟哲",
   nav: [
     { href: "/", label: "首页" },
-    { href: "/about", label: "关于" },
     { href: "/projects", label: "项目" },
-    { href: "/blog", label: "博客" },
+    { href: "/gallery", label: "摄影集" },
     { href: "/contact", label: "联系" },
   ],
   hero: {
+    imageSrc: "/hero-image.png",
+    imageAlt: "Hero image",
     name: "你好，我是你的名字",
-    role: "产品工程师 / 独立开发者",
+    role: "产品经理 / 产品运营 / 独立开发者 / 独立摄影师",
     intro:
       "我专注于构建简洁、可靠、体验友好的数字产品，喜欢把复杂问题变成清晰可用的解决方案。",
     primaryCta: "查看项目",
@@ -75,28 +94,51 @@ const zhCopy: SiteCopy = {
       "我目前专注于 Web 应用开发，擅长 React、Next.js 和产品体验设计。工作之外，我会写技术文章、做开源尝试，并持续优化自己的创作流程。",
   },
   projects: {
-    title: "精选项目",
-    intro: "这里是我近期最有代表性的三个项目。",
-    items: [
+    title: "项目与文章",
+    intro: "用来记录想法的演进：Idea 带状态，文章只展示标题/概览/预览图。",
+    ideas: [
       {
-        name: "FocusFlow",
-        description: "一个帮助你规划深度工作和复盘节奏的任务管理工具。",
+        title: "FocusFlow",
+        summary: "详情为只读展示。你可以通过编辑项目内容并重新发布到线上更新。",
+        content: "深度工作规划 + 复盘节奏的任务管理工具。",
+        status: "in_progress",
         tech: "Next.js / Prisma / PostgreSQL",
         link: "https://example.com/focusflow",
       },
       {
-        name: "Design Snippets",
-        description: "收集和整理可复用 UI 片段的组件文档站。",
+        title: "Design Snippets",
+        summary: "详情为只读展示。你可以通过编辑项目内容并重新发布到线上更新。",
+        content: "把可复用 UI 片段沉淀成组件文档与检索系统。",
+        status: "launched",
         tech: "React / Tailwind CSS / Storybook",
         link: "https://example.com/design-snippets",
       },
       {
-        name: "ReadLite",
-        description: "一个支持高亮和摘录导出的轻量阅读应用。",
+        title: "ReadLite",
+        summary: "详情为只读展示。你可以通过编辑项目内容并重新发布到线上更新。",
+        content: "支持高亮/摘录导出的轻量阅读应用。",
+        status: "in_progress",
         tech: "TypeScript / Supabase / Vercel",
         link: "https://example.com/readlite",
       },
     ],
+    articles: [
+      {
+        title: "Idea 到上线的最短路径",
+        summary: "从需求澄清、原型验证到交付的轻量方法论。",
+        coverSrc: "/hero-image.png",
+      },
+      {
+        title: "如何维护一个可持续的灵感库",
+        summary: "记录、筛选与更新，让想法真正变成可执行的路线图。",
+        coverSrc: "/hero-image.png",
+      },
+    ],
+  },
+  gallery: {
+    title: "摄影集",
+    intro: "整理一些旅行与瞬间。后续会持续更新。",
+    caption: "拍摄于 摩尔曼斯克极夜时间",
   },
   blog: {
     title: "最新文章",
@@ -133,14 +175,15 @@ const enCopy: SiteCopy = {
   siteTitle: "Your Name",
   nav: [
     { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
     { href: "/projects", label: "Projects" },
-    { href: "/blog", label: "Blog" },
+    { href: "/gallery", label: "Photography" },
     { href: "/contact", label: "Contact" },
   ],
   hero: {
+    imageSrc: "/hero-image.png",
+    imageAlt: "Hero image",
     name: "Hi, I'm Your Name",
-    role: "Product Engineer / Indie Builder",
+    role: "Product Manager / Product Ops / Indie Builder / Independent Photographer",
     intro:
       "I build clean and reliable digital products, turning complex problems into clear and useful experiences.",
     primaryCta: "View Projects",
@@ -152,28 +195,55 @@ const enCopy: SiteCopy = {
       "I focus on modern web applications with React, Next.js, and product thinking. Outside work, I write technical posts, experiment with open-source ideas, and refine my maker workflow.",
   },
   projects: {
-    title: "Selected Projects",
-    intro: "Three representative projects I have worked on recently.",
-    items: [
+    title: "Projects & Articles",
+    intro: "A place to track the evolution of ideas: Ideas have status, Articles show title/summary/preview only.",
+    ideas: [
       {
-        name: "FocusFlow",
-        description: "A task system for planning deep work and meaningful review loops.",
+        title: "FocusFlow",
+        summary:
+          "Read-only details. You can update by editing the project content and redeploying.",
+        content: "A task system for planning deep work and review loops.",
+        status: "in_progress",
         tech: "Next.js / Prisma / PostgreSQL",
         link: "https://example.com/focusflow",
       },
       {
-        name: "Design Snippets",
-        description: "A component docs site for collecting reusable UI patterns.",
+        title: "Design Snippets",
+        summary:
+          "Read-only details. You can update by editing the project content and redeploying.",
+        content:
+          "A component docs and search system for reusable UI patterns.",
+        status: "launched",
         tech: "React / Tailwind CSS / Storybook",
         link: "https://example.com/design-snippets",
       },
       {
-        name: "ReadLite",
-        description: "A lightweight reading app with highlights and exportable notes.",
+        title: "ReadLite",
+        summary:
+          "Read-only details. You can update by editing the project content and redeploying.",
+        content: "A lightweight reading app with highlights and exportable notes.",
+        status: "in_progress",
         tech: "TypeScript / Supabase / Vercel",
         link: "https://example.com/readlite",
       },
     ],
+    articles: [
+      {
+        title: "The Shortest Path from Idea to Launch",
+        summary: "A lightweight workflow from clarification to delivery.",
+        coverSrc: "/hero-image.png",
+      },
+      {
+        title: "Maintaining a Sustainable Idea Library",
+        summary: "Capture, filter, and refresh so ideas become executable roadmaps.",
+        coverSrc: "/hero-image.png",
+      },
+    ],
+  },
+  gallery: {
+    title: "Photography",
+    intro: "A collection of travels and moments. More coming soon.",
+    caption: "Captured during the Midnight Sun in Murmansk",
   },
   blog: {
     title: "Latest Posts",
