@@ -24,3 +24,9 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* 首页正文：宋体/明体（横细竖粗、印刷感；先走 Noto Serif SC，再走系统宋体） */
+.font-song {
+  font-family: var(--font-noto-serif-sc), "Songti SC", "STSong", "SimSun", "NSimSun",
+    "Noto Serif CJK SC", "Source Han Serif SC", serif;
+}

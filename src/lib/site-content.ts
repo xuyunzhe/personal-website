@@ -61,12 +61,22 @@ export type SiteCopy = {
   gallery: {
     title: string;
     intro: string;
-    caption: string;
+    /** 仅追加新条目，勿删除或替换已有项，避免丢失历史图片 */
+    photos: Array<{
+      src: string;
+      alt: string;
+      caption: string;
+    }>;
   };
   blog: {
     title: string;
     intro: string;
     items: PostItem[];
+  };
+  /** 首页「项目」区块上方的引言（左侧竖线 + 双行文案） */
+  homeArticleLead: {
+    line1: string;
+    line2: string;
   };
   contact: {
     title: string;
@@ -92,7 +102,7 @@ const zhCopy: SiteCopy = {
     name: "大家好，我是徐赟哲",
     role: "PM / 增长 / 收益 / 体验 / AI",
     intro:
-      "我在产品思维和独立开发之间来回切换，擅长把模糊想法快速落成可用版本，再通过持续迭代把体验打磨到更顺手，拥有多个从0到1 的项目经验，不论是职业生涯还是自发项目。\n\n这个网站里所有页面搭建与项目落地，都源自我对 vibe coding 的实践；我会持续记录自己的思考和学习过程，以及那些无处安放的 idea。\n\n关于我的职业信息：PM / 增长 / 收益 / 体验 / AI\n关于我的其他信息：摄影师（希望成为）",
+      "大家好，我是徐赟哲，\n在这里你会看到我发布的一些项目，我的一些想法，一些小实验，还有一些图片。\n\n这个网站里所有页面搭建与项目落地，都源自我对 vibe coding 的实践；我会持续记录自己的思考和学习过程，以及那些无处安放的 idea。\n\n关于我的职业信息：PM / 增长 / 收益 / 体验 / AI\n关于我的其他信息：摄影师（希望成为）",
     primaryCta: "查看项目",
     secondaryCta: "联系我",
   },
@@ -185,20 +195,61 @@ const zhCopy: SiteCopy = {
     articles: [
       {
         title: "Idea 到上线的最短路径",
-        summary: "从需求澄清、原型验证到交付的轻量方法论。",
-        coverSrc: "/hero-image.png",
+        summary: "从需求澄清、原型验证到交付的轻量方法论。占位示例，更新中",
+        coverSrc: "/previews/article-preview-red-cabin.png",
       },
       {
         title: "如何维护一个可持续的灵感库",
-        summary: "记录、筛选与更新，让想法真正变成可执行的路线图。",
-        coverSrc: "/hero-image.png",
+        summary: "记录、筛选与更新，让想法真正变成可执行的路线图。占位示例，更新中",
+        coverSrc: "/previews/article-preview-red-cabin.png",
       },
     ],
   },
   gallery: {
     title: "摄影集",
     intro: "整理一些旅行与瞬间。后续会持续更新。",
-    caption: "拍摄于 摩尔曼斯克极夜时间",
+    photos: [
+      {
+        src: "/hero-image.png",
+        alt: "摩尔曼斯克极夜",
+        caption: "拍摄于 摩尔曼斯克极夜时间",
+      },
+      {
+        src: "/gallery/01-tokyo-nightscape.png",
+        alt: "东京夜景与远处富士山轮廓",
+        caption: "东京夜景与富士山轮廓",
+      },
+      {
+        src: "/gallery/02-tokyo-bay-dusk.png",
+        alt: "东京湾暮色，东京塔与彩虹桥",
+        caption: "东京湾暮色，东京塔与彩虹桥",
+      },
+      {
+        src: "/gallery/03-beach-from-above.png",
+        alt: "俯瞰海滩与浪花",
+        caption: "俯瞰海滩",
+      },
+      {
+        src: "/gallery/04-beach-dinner-sunset.png",
+        alt: "海滩日落时的露天晚餐",
+        caption: "海滩日落与晚餐",
+      },
+      {
+        src: "/gallery/05-street-cafe-twilight.png",
+        alt: "街角咖啡馆与暮色天空",
+        caption: "街角咖啡馆，暮色",
+      },
+      {
+        src: "/gallery/06-winter-road.png",
+        alt: "雪路与车灯暮色",
+        caption: "雪路车行",
+      },
+      {
+        src: "/gallery/07-mount-fuji-lake.png",
+        alt: "河口湖与富士山",
+        caption: "河口湖与富士山",
+      },
+    ],
   },
   blog: {
     title: "最新文章",
@@ -220,6 +271,10 @@ const zhCopy: SiteCopy = {
         date: "2026-01-15",
       },
     ],
+  },
+  homeArticleLead: {
+    line1: "不附庸的思辨者 | INTP",
+    line2: "喜欢把问题想清楚，也偏爱有结构、有巧思与美感的物与事",
   },
   contact: {
     title: "联系我",
@@ -340,20 +395,61 @@ const enCopy: SiteCopy = {
     articles: [
       {
         title: "The Shortest Path from Idea to Launch",
-        summary: "A lightweight workflow from clarification to delivery.",
-        coverSrc: "/hero-image.png",
+        summary: "A lightweight workflow from clarification to delivery. Placeholder example, updating.",
+        coverSrc: "/previews/article-preview-red-cabin.png",
       },
       {
         title: "Maintaining a Sustainable Idea Library",
-        summary: "Capture, filter, and refresh so ideas become executable roadmaps.",
-        coverSrc: "/hero-image.png",
+        summary: "Capture, filter, and refresh so ideas become executable roadmaps. Placeholder example, updating.",
+        coverSrc: "/previews/article-preview-red-cabin.png",
       },
     ],
   },
   gallery: {
     title: "Photography",
     intro: "A collection of travels and moments. More coming soon.",
-    caption: "Captured during the Midnight Sun in Murmansk",
+    photos: [
+      {
+        src: "/hero-image.png",
+        alt: "Polar night in Murmansk",
+        caption: "Captured during the polar night in Murmansk",
+      },
+      {
+        src: "/gallery/01-tokyo-nightscape.png",
+        alt: "Tokyo at night with Mount Fuji on the horizon",
+        caption: "Tokyo night, Fuji silhouette",
+      },
+      {
+        src: "/gallery/02-tokyo-bay-dusk.png",
+        alt: "Tokyo Bay at dusk with Tokyo Tower and Rainbow Bridge",
+        caption: "Tokyo Bay at dusk",
+      },
+      {
+        src: "/gallery/03-beach-from-above.png",
+        alt: "Beach and surf from above",
+        caption: "Beach from above",
+      },
+      {
+        src: "/gallery/04-beach-dinner-sunset.png",
+        alt: "Open-air dinner on the beach at sunset",
+        caption: "Beach dinner at sunset",
+      },
+      {
+        src: "/gallery/05-street-cafe-twilight.png",
+        alt: "Street corner cafe at twilight",
+        caption: "Street cafe, twilight",
+      },
+      {
+        src: "/gallery/06-winter-road.png",
+        alt: "Snow-covered road at dusk",
+        caption: "Winter road at dusk",
+      },
+      {
+        src: "/gallery/07-mount-fuji-lake.png",
+        alt: "Mount Fuji above a lakeshore",
+        caption: "Mount Fuji and the lake",
+      },
+    ],
   },
   blog: {
     title: "Latest Posts",
@@ -376,6 +472,10 @@ const enCopy: SiteCopy = {
       },
     ],
   },
+  homeArticleLead: {
+    line1: "A thinker who won't just go along | INTP",
+    line2: "I like getting to the bottom of things—and I lean toward structure, clever ideas, and things made with care.",
+  },
   contact: {
     title: "Contact",
     intro: "Open to product discussions, technical collaboration, and new ideas.",
@@ -386,8 +486,20 @@ const enCopy: SiteCopy = {
   langSwitchLabel: "中文",
 };
 
-export function getLang(value?: string): Lang {
-  return value === "zh" ? "zh" : "en";
+/**
+ * 从 URL 查询解析界面语言。未传、空值或非 `zh` 时均为 **英文（默认）**。
+ */
+export function getLang(value?: string | string[] | null): Lang {
+  const raw = Array.isArray(value) ? value[0] : value;
+  return raw === "zh" ? "zh" : "en";
+}
+
+/**
+ * 生成带语言的路由：英文为干净路径（不加 query）；中文为 `?lang=zh`。
+ */
+export function withLang(path: string, lang: Lang): string {
+  if (lang === "en") return path;
+  return path.includes("?") ? `${path}&lang=zh` : `${path}?lang=zh`;
 }
 
 export function getCopy(lang: Lang): SiteCopy {
