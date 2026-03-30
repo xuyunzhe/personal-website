@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import SiteLayout from "@/components/site-layout";
 import { getCopy, getLang } from "@/lib/site-content";
-import { toSlug } from "@/lib/slug";
+import { ideaSlug } from "@/lib/slug";
 
 type ProjectsPageProps = {
   searchParams: Promise<{ lang?: string }>;
@@ -19,11 +19,13 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
           idea: "Idea",
           in_progress: "实现中",
           launched: "已上线",
+          journal: "随记",
         }
       : {
           idea: "Idea",
           in_progress: "In Progress",
           launched: "Launched",
+          journal: "Notes",
         };
 
   return (
@@ -40,8 +42,8 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
         <div className="grid gap-5 md:grid-cols-2">
           {copy.projects.ideas.map((idea) => (
             <Link
-              key={idea.title}
-              href={`/projects/ideas/${toSlug(idea.title)}?lang=${lang}`}
+              key={ideaSlug(idea)}
+              href={`/projects/ideas/${ideaSlug(idea)}?lang=${lang}`}
               className="block"
             >
               <article className="rounded-2xl border border-zinc-200 bg-white p-6 transition hover:border-zinc-300 hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700 dark:hover:bg-zinc-950">
@@ -59,7 +61,9 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
                         ? "bg-amber-100 text-amber-900 dark:bg-amber-900/30 dark:text-amber-200"
                         : idea.status === "launched"
                           ? "bg-emerald-100 text-emerald-900 dark:bg-emerald-900/30 dark:text-emerald-200"
-                          : "bg-zinc-100 text-zinc-900 dark:bg-zinc-800/50 dark:text-zinc-200",
+                          : idea.status === "journal"
+                            ? "bg-violet-100 text-violet-900 dark:bg-violet-900/30 dark:text-violet-200"
+                            : "bg-zinc-100 text-zinc-900 dark:bg-zinc-800/50 dark:text-zinc-200",
                     ].join(" ")}
                   >
                     {statusLabel[idea.status]}

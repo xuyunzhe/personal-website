@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import SiteLayout from "@/components/site-layout";
 import { getCopy, getLang } from "@/lib/site-content";
-import { toSlug } from "@/lib/slug";
+import { ideaSlug } from "@/lib/slug";
 import IdeaDetailClient from "./IdeaDetailClient";
 
 type IdeaDetailPageProps = {
@@ -18,9 +18,7 @@ export default async function IdeaDetailPage({
   const lang = getLang(query.lang);
   const copy = getCopy(lang);
 
-  const idea = copy.projects.ideas.find(
-    (i) => toSlug(i.title) === p.slug,
-  );
+  const idea = copy.projects.ideas.find((i) => ideaSlug(i) === p.slug);
 
   if (!idea) notFound();
 

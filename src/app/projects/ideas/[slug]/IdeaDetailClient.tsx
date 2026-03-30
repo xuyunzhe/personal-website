@@ -1,10 +1,27 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo } from "react";
+import { useMemo, type ReactNode } from "react";
 import type { Lang, SiteCopy } from "@/lib/site-content";
 
 type IdeaItem = SiteCopy["projects"]["ideas"][number];
+
+function parseBoldSegments(text: string): ReactNode[] {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((part, i) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return (
+        <strong
+          key={i}
+          className="font-semibold text-zinc-950 dark:text-zinc-50"
+        >
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    return <span key={i}>{part}</span>;
+  });
+}
 
 type IdeaDetailClientProps = {
   lang: Lang;
@@ -21,12 +38,14 @@ export default function IdeaDetailClient({
         idea: "Idea",
         in_progress: "In Progress",
         launched: "Launched",
+        journal: "Notes",
       } satisfies Record<IdeaItem["status"], string>;
     }
     return {
       idea: "Idea",
       in_progress: "实现中",
       launched: "已上线",
+      journal: "随记",
     } satisfies Record<IdeaItem["status"], string>;
   }, [lang]);
 
@@ -36,6 +55,9 @@ export default function IdeaDetailClient({
     }
     if (idea.status === "launched") {
       return "bg-emerald-600 text-white";
+    }
+    if (idea.status === "journal") {
+      return "bg-violet-600 text-white";
     }
     return "bg-zinc-200 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100";
   }, [idea.status]);
@@ -72,8 +94,15 @@ export default function IdeaDetailClient({
       </section>
 
       <section className="space-y-3 rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
-        <div className="whitespace-pre-wrap font-mono text-sm leading-6 text-zinc-900 dark:text-zinc-100">
-          {idea.content}
+        <div className="space-y-4 font-mono text-sm leading-6 text-zinc-900 dark:text-zinc-100">
+          {idea.content
+            .split(/\n\n+/)
+            .filter((block) => block.trim().length > 0)
+            .map((block, i) => (
+              <p key={i} className="whitespace-pre-wrap">
+                {parseBoldSegments(block)}
+              </p>
+            ))}
         </div>
       </section>
 

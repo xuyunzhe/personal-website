@@ -5,9 +5,11 @@ type NavItem = {
   label: string;
 };
 
-type IdeaStatus = "idea" | "in_progress" | "launched";
+type IdeaStatus = "idea" | "in_progress" | "launched" | "journal";
 
 type IdeaItem = {
+  /** URL path segment when `toSlug(title)` would be empty (e.g. Chinese-only titles). */
+  slug?: string;
   title: string;
   summary: string;
   content: string;
@@ -82,7 +84,7 @@ const zhCopy: SiteCopy = {
   hero: {
     imageSrc: "/hero-image.png",
     imageAlt: "Hero image",
-    name: "你好，我是你的名字",
+    name: "大家好，我是徐赟哲",
     role: "产品经理 / 产品运营 / 独立开发者 / 独立摄影师",
     intro:
       "我专注于构建简洁、可靠、体验友好的数字产品，喜欢把复杂问题变成清晰可用的解决方案。",
@@ -96,34 +98,39 @@ const zhCopy: SiteCopy = {
   },
   projects: {
     title: "项目与文章",
-    intro: "用来记录想法的演进：Idea 带状态，文章只展示标题/概览/预览图。",
+    intro: "记录了我的一些idea，以及落地进度，会把一些落地的过程整理为文章记录下来。",
     ideas: [
       {
-        title: "FocusFlow",
-        summary: "详情为只读展示。你可以通过编辑项目内容并重新发布到线上更新。",
-        content: "深度工作规划 + 复盘节奏的任务管理工具。",
-        status: "idea",
-        date: "2026-03-01",
-        tech: "Next.js / Prisma / PostgreSQL",
-        link: "https://example.com/focusflow",
-      },
-      {
-        title: "Design Snippets",
-        summary: "详情为只读展示。你可以通过编辑项目内容并重新发布到线上更新。",
-        content: "把可复用 UI 片段沉淀成组件文档与检索系统。",
+        slug: "personal-website",
+        title: "创建个人网站",
+        summary:
+          "我觉得尝试vibe coding最简单的方式，搭建一个属于自己的空间",
+        content:
+          "用 Next.js App Router、TypeScript 和 Tailwind 搭了这个站点，内容集中在代码里，改完推上去就能更新。部署在 Vercel，绑了自己的域名。算是一次从零到可访问的完整小闭环。",
         status: "launched",
-        date: "2026-02-01",
-        tech: "React / Tailwind CSS / Storybook",
-        link: "https://example.com/design-snippets",
+        date: "2026-03-20",
+        tech: "Next.js / TypeScript / Tailwind CSS / Vercel",
+        link: "https://xuyunzhe.site",
       },
       {
-        title: "ReadLite",
-        summary: "详情为只读展示。你可以通过编辑项目内容并重新发布到线上更新。",
-        content: "支持高亮/摘录导出的轻量阅读应用。",
-        status: "in_progress",
-        date: "2026-01-15",
-        tech: "TypeScript / Supabase / Vercel",
-        link: "https://example.com/readlite",
+        slug: "salary-timer",
+        title: "收入实时计算器",
+        summary:
+          "如果把每一秒赚到的钱，在电脑上面实时展示，我上班的动力一定很强",
+        content:
+          "**Idea：**在 Mac **菜单栏**里实时看到自己的**每秒收入**，在工位坐着的时候心情也许会好一点？\n+1 元 +1 元 +1 元 +1 元…\n\n第一次做**落地 App** 的尝试，首选 **Mac**：不需要先打通 iOS 端各种 App 限制，**成本很低**；开发完成后**只要打包即可**，整条流程都在视野范围之内，**踩坑的概率**应该比较小。\n\n**网站迭代计划：**如果要在网站上**上传自己的作品**供人下载，应该增加一个**作品发布 / 下载**的能力，直接贴百度云链接，**可太不体面了**…",
+        status: "launched",
+        date: "2026-03-26",
+        tech: "Swift / macOS",
+      },
+      {
+        slug: "human-drive-vibe-coding",
+        title: "Human-Drive的实际感受",
+        summary: "落地了两个项目之后，对于Vibe coding 的一些想法",
+        content:
+          "最开始搞vibe coding尝试的时候，因为注册成本这些问题，没选Claude code，选了**Cursor**来做第一次尝试。\n\n第一感觉就是**“兴奋”**，用自然语言交互，能把各种想法变成能看到的项目。但搞了两个实操项目之后，我觉得**工作流程本质上其实没啥变化**。跟在公司里推动需求流程比，省了评审排期这些复杂的流程，就只要**文档交付然后查收**就行，但整个流程还是**人在主导**。\n\n相比于直接和研发进行沟通，我的**试错成本反而少了很多**，更能直观的感受到**每一个字符的思考&开发成本**，我的操作模式逐渐从**“想一步实现一步”**变成**“想清楚——描述清楚”**，果然**当家了才知道柴米油盐贵**。\n\n目前的两个项目还不够复杂，也没有涉及到前端样式美化的短板，处于**门外汉的阶段**，所以下次想要**尝试一些更复杂的idea**，看看是否有新的感受",
+        status: "journal",
+        date: "2026-03-28",
       },
     ],
     articles: [
@@ -171,7 +178,7 @@ const zhCopy: SiteCopy = {
     emailLabel: "邮箱",
     locationLabel: "城市",
   },
-  footer: "© 2026 你的名字. All rights reserved.",
+  footer: "© 2026 徐赟哲. All rights reserved.",
   langSwitchLabel: "English",
 };
 
@@ -200,38 +207,41 @@ const enCopy: SiteCopy = {
   },
   projects: {
     title: "Projects & Articles",
-    intro: "A place to track the evolution of ideas: Ideas have status, Articles show title/summary/preview only.",
+    intro:
+      "This section tracks some of my ideas and their delivery progress, and I document selected implementation journeys as articles.",
     ideas: [
       {
-        title: "FocusFlow",
+        slug: "personal-website",
+        title: "Building a Personal Website",
         summary:
-          "Read-only details. You can update by editing the project content and redeploying.",
-        content: "A task system for planning deep work and review loops.",
-        status: "idea",
-        date: "2026-03-01",
-        tech: "Next.js / Prisma / PostgreSQL",
-        link: "https://example.com/focusflow",
-      },
-      {
-        title: "Design Snippets",
-        summary:
-          "Read-only details. You can update by editing the project content and redeploying.",
+          "I think the simplest way to try vibe coding is to build a space of your own.",
         content:
-          "A component docs and search system for reusable UI patterns.",
+          "Built with Next.js App Router, TypeScript, and Tailwind. Copy lives in the codebase—edit, push, and it’s live. Deployed on Vercel with a custom domain. A small end-to-end loop from zero to something you can visit.",
         status: "launched",
-        date: "2026-02-01",
-        tech: "React / Tailwind CSS / Storybook",
-        link: "https://example.com/design-snippets",
+        date: "2026-03-20",
+        tech: "Next.js / TypeScript / Tailwind CSS / Vercel",
+        link: "https://xuyunzhe.site",
       },
       {
-        title: "ReadLite",
+        slug: "salary-timer",
+        title: "Real-Time Income Calculator",
         summary:
-          "Read-only details. You can update by editing the project content and redeploying.",
-        content: "A lightweight reading app with highlights and exportable notes.",
-        status: "in_progress",
-        date: "2026-01-15",
-        tech: "TypeScript / Supabase / Vercel",
-        link: "https://example.com/readlite",
+          "If every cent I earn per second showed live on my Mac, I’d feel a lot more motivated at work.",
+        content:
+          "**Idea:** see your **per-second income** live in the Mac **menu bar**—maybe it cheers you up a little at your desk?\n+1 +1 +1 +1…\n\nThis was my first try at shipping a **real app**, and I picked **macOS** first: no need to fight through all the iOS store and permission hoops up front, so the **cost stayed low**; once it worked, I could **just package and ship**, with the **whole pipeline in sight** and a **smaller chance of nasty surprises**.\n\n**Site roadmap:** if I want people to **download my work** from this website, I should add a **proper upload / distribution** flow, dropping **only a Baidu Netdisk link** feels **pretty undignified**…",
+        status: "launched",
+        date: "2026-03-26",
+        tech: "Swift / macOS",
+      },
+      {
+        slug: "human-drive-vibe-coding",
+        title: "Human-Drive: What It Actually Feels Like",
+        summary:
+          "After shipping two projects, some thoughts on vibe coding.",
+        content:
+          "When I first tried vibe coding, signup friction and similar issues led me to skip Claude Code and use **Cursor** for the first run.\n\nMy first feeling was **“excitement”**: natural language could turn ideas into something you could see. After two hands-on projects, though, I think **the workflow itself hasn’t really changed**. Compared to pushing requirements at a company, I skip reviews and scheduling—mostly **write the spec and accept delivery**—but **humans still run the whole show**.\n\nVersus talking directly to engineers, my **trial-and-error cost actually dropped**, and I feel **the thinking and implementation cost behind every character** more clearly. My mode shifted from **“think one step, build one step”** to **“think it through—describe it clearly”**—**you only learn what groceries cost when you run the household**.\n\nThese two projects aren’t complex yet and barely touch front-end polish; I’m still **very much a beginner**, so next I want to **try a more ambitious idea** and see if anything feels different.",
+        status: "journal",
+        date: "2026-03-28",
       },
     ],
     articles: [

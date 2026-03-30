@@ -58,7 +58,7 @@ export default async function Home({ searchParams }: HomeProps) {
         </div>
       </section>
 
-      <section className="mt-16 grid gap-6 md:grid-cols-2">
+      <section className="mt-16 grid gap-6 md:grid-cols-3">
         <article className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
           <h2 className="text-xl font-semibold">{copy.about.title}</h2>
           <p className="mt-3 text-zinc-600 dark:text-zinc-300">
@@ -74,7 +74,23 @@ export default async function Home({ searchParams }: HomeProps) {
             href={`/projects?lang=${lang}`}
             className="mt-4 inline-block text-sm font-medium text-blue-600 hover:underline dark:text-blue-400"
           >
-            {lang === "zh" ? "查看更多项目" : "See all projects"}
+            {lang === "zh" ? "查看更多" : "View more"}
+          </Link>
+        </article>
+        <article className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+          <h2 className="text-xl font-semibold">
+            {lang === "zh" ? "我的摄影集" : "My Photography"}
+          </h2>
+          <p className="mt-3 text-zinc-600 dark:text-zinc-300">
+            {lang === "zh"
+              ? "记录我在路上遇到的好风景。"
+              : "Capturing beautiful scenes I encounter on the road."}
+          </p>
+          <Link
+            href={`/gallery?lang=${lang}`}
+            className="mt-4 inline-block text-sm font-medium text-blue-600 hover:underline dark:text-blue-400"
+          >
+            {lang === "zh" ? "进入摄影集" : "View photography"}
           </Link>
         </article>
       </section>
