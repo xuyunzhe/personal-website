@@ -15,6 +15,11 @@ type IdeaItem = {
   content: string;
   status: IdeaStatus;
   date: string; // YYYY-MM-DD
+  /** Preview images shown on launched idea detail pages. */
+  previewImages?: Array<{
+    src: string;
+    alt?: string;
+  }>;
   tech?: string;
   link?: string;
 };
@@ -85,9 +90,9 @@ const zhCopy: SiteCopy = {
     imageSrc: "/hero-image.png",
     imageAlt: "Hero image",
     name: "大家好，我是徐赟哲",
-    role: "产品经理 / 产品运营 / 独立开发者 / 独立摄影师",
+    role: "PM / 增长 / 收益 / 体验 / AI",
     intro:
-      "我专注于构建简洁、可靠、体验友好的数字产品，喜欢把复杂问题变成清晰可用的解决方案。",
+      "我在产品思维和独立开发之间来回切换，擅长把模糊想法快速落成可用版本，再通过持续迭代把体验打磨到更顺手，拥有多个从0到1 的项目经验，不论是职业生涯还是自发项目。\n\n这个网站里所有页面搭建与项目落地，都源自我对 vibe coding 的实践；我会持续记录自己的思考和学习过程，以及那些无处安放的 idea。\n\n关于我的职业信息：PM / 增长 / 收益 / 体验 / AI\n关于我的其他信息：摄影师（希望成为）",
     primaryCta: "查看项目",
     secondaryCta: "联系我",
   },
@@ -106,7 +111,7 @@ const zhCopy: SiteCopy = {
         summary:
           "我觉得尝试vibe coding最简单的方式，搭建一个属于自己的空间",
         content:
-          "用 Next.js App Router、TypeScript 和 Tailwind 搭了这个站点，内容集中在代码里，改完推上去就能更新。部署在 Vercel，绑了自己的域名。算是一次从零到可访问的完整小闭环。",
+          "这次做个人网站，我给自己定的目标很简单：先把主页、项目页、摄影集和联系页跑起来，保证能稳定访问，不追求一步到位。\n\n技术栈我选了 Next.js App Router + TypeScript + Tailwind。最先做的是信息结构和导航，然后把中英文文案、想法和文章都收敛到 `site-content.ts`，这样每次改内容我都知道该去哪里改，维护成本低很多。\n\n开发过程里，我基本是「想清楚一段，就实现一段」。本地看效果没问题后就 `git commit` + `git push`，交给 Vercel 自动部署。域名这块我把 `xuyunzhe.site` 和 `www` 都接上，等 DNS 生效后，整个站点就正式可访问了。\n\n复盘下来，这个项目最大的收获不是技术难度，而是把「从想法到上线」这条链路完整走通。现在我的节奏就是：快速上线、小步迭代、持续记录，让网站跟着我的作品一起成长。",
         status: "launched",
         date: "2026-03-20",
         tech: "Next.js / TypeScript / Tailwind CSS / Vercel",
@@ -118,10 +123,54 @@ const zhCopy: SiteCopy = {
         summary:
           "如果把每一秒赚到的钱，在电脑上面实时展示，我上班的动力一定很强",
         content:
-          "**Idea：**在 Mac **菜单栏**里实时看到自己的**每秒收入**，在工位坐着的时候心情也许会好一点？\n+1 元 +1 元 +1 元 +1 元…\n\n第一次做**落地 App** 的尝试，首选 **Mac**：不需要先打通 iOS 端各种 App 限制，**成本很低**；开发完成后**只要打包即可**，整条流程都在视野范围之内，**踩坑的概率**应该比较小。\n\n**网站迭代计划：**如果要在网站上**上传自己的作品**供人下载，应该增加一个**作品发布 / 下载**的能力，直接贴百度云链接，**可太不体面了**…",
+          "**Idea：**在 Mac **菜单栏**里实时看到自己的**每秒收入**，在工位坐着的时候心情也许会好一点？\n+1 元 +1 元 +1 元 +1 元…\n\n第一次做**落地 App** 的尝试，首选 **Mac**：不需要先打通 iOS 端各种 App 限制，**成本很低**；开发完成后**只要打包即可**，整条流程都在视野范围之内，**踩坑的概率**应该比较小。\n\n**网站迭代计划：**如果要在网站上**上传自己的作品**供人下载，应该增加一个**作品发布 / 下载**的能力，直接贴百度云链接，**可太不体面了**…\n\n**3月30日：**薪资这种敏感数据还是更适合放在手表这种私密性较高的端口使用，下一步希望把现在的功能点再做删减，变为更简洁的 MVP 版本，然后上线到 Apple Watch 端。",
         status: "launched",
         date: "2026-03-26",
+        previewImages: [
+          {
+            src: "/previews/salary-timer-preview-1.png",
+            alt: "SalaryTimer release files",
+          },
+          {
+            src: "/previews/salary-timer-preview-2.png",
+            alt: "SalaryTimer app main panel",
+          },
+          {
+            src: "/previews/salary-timer-preview-3.png",
+            alt: "SalaryTimer menu bar amount",
+          },
+        ],
         tech: "Swift / macOS",
+      },
+      {
+        slug: "next-project-goals",
+        title: "接下来的项目目标",
+        summary:
+          "ios客户端，微信小程序，apple watch端，每个端口都可以把路径跑通",
+        content:
+          "接下来我想把同一套核心能力往多端扩展：先做 iOS 客户端，再做微信小程序，最后补上 Apple Watch 端，验证「同一条业务链路」在不同入口都能跑通。\n\n第一阶段会先把数据结构和接口约束定清楚，保证三端看的是同一份核心数据；第二阶段再针对每个端的交互习惯做轻量适配，不追求一次做到最完整。\n\n我的目标不是一次铺得很大，而是先把最小可用路径打通：能登录、能看到核心信息、能完成关键操作。只要这条链路稳定，后续再逐端做体验和性能优化。",
+        status: "journal",
+        date: "2026-03-28",
+      },
+      {
+        slug: "ios-long-screenshot",
+        title: "ios 手机长截图功能",
+        summary:
+          "如果苹果手机可以更好的支持长截图就好了， 小目标是希望可以和截图一样，在控制中心唤出使用",
+        content:
+          "这个想法的核心是把「长截图」做成和普通截图一样顺手：不需要额外打开 App，不需要复杂步骤，最好能直接从控制中心一键唤起。\n\n第一版我会先聚焦一个最小可用场景：网页或聊天内容的连续截取 + 快速导出。只要把触发、拼接和保存这三步跑通，就已经有价值。\n\n后续再考虑细节体验，比如截取预览、局部重排、导出格式和隐私处理。目标不是功能堆满，而是让高频场景足够快、足够稳。",
+        status: "idea",
+        date: "2026-03-30",
+      },
+      {
+        slug: "moments-copy-generator",
+        title: "朋友圈strong文案生成",
+        summary:
+          "每次发朋友圈想一些既不土又很高级的文案都很难，还要搭配图片，这次希望我把所有p好的图片上传上去就帮我自动搭配好9格和文案",
+        content:
+          "这个项目想解决我每次发朋友圈前最耗时的环节：选图、排 9 宫格、想文案。理想状态是我只负责把修好的图片上传，系统自动完成编排和文案建议。\n\n第一版会先做两个核心能力：一是根据图片内容和色调自动组合 9 格顺序；二是基于场景（旅行、生活、工作）生成多种语气的文案草稿，保证「不土」但又有辨识度。\n\n交互上我希望尽量简单：上传图片 -> 选择风格 -> 一键生成。后续再加手动微调能力，比如替换单张、锁定某一格位置、文案长度控制和 emoji 风格开关，让效率和个性化同时成立。\n\n最后一个关键问题是：怎么判断文案和图片搭配到底「土不土」。这里我希望关联抖音 / 小红书上优质博主的公开内容，提取表达风格、用词密度、情绪节奏和图文匹配关系，让 AI 持续学习并做识别评分，给出更接近真实平台审美的建议。",
+        status: "in_progress",
+        date: "2026-03-29",
       },
       {
         slug: "human-drive-vibe-coding",
@@ -194,9 +243,9 @@ const enCopy: SiteCopy = {
     imageSrc: "/hero-image.png",
     imageAlt: "Hero image",
     name: "Hi, I'm XuYunZhe",
-    role: "Product Manager / Product Ops / Indie Builder / Independent Photographer",
+    role: "PM / Growth / Revenue / Experience / AI",
     intro:
-      "I build clean and reliable digital products, turning complex problems into clear and useful experiences.",
+      "I switch between product thinking and indie building, turning fuzzy ideas into usable versions quickly, then refining them through continuous iteration.\n\nEvery page and shipped project here comes from my vibe coding practice. This site is where I document my learning process and all the ideas that need a place to live.\n\nProfessional focus: PM / Growth / Revenue / Experience / AI\nPersonal goal: Photographer (in progress).",
     primaryCta: "View Projects",
     secondaryCta: "Get In Touch",
   },
@@ -216,7 +265,7 @@ const enCopy: SiteCopy = {
         summary:
           "I think the simplest way to try vibe coding is to build a space of your own.",
         content:
-          "Built with Next.js App Router, TypeScript, and Tailwind. Copy lives in the codebase—edit, push, and it’s live. Deployed on Vercel with a custom domain. A small end-to-end loop from zero to something you can visit.",
+          "For this personal site, I set a simple goal: get four pages live first—Home, Projects, Gallery, and Contact—then improve in small steps instead of chasing perfection on day one.\n\nI chose Next.js App Router + TypeScript + Tailwind. I started with information architecture and navigation, then centralized bilingual copy, ideas, and articles in `site-content.ts`, which made content updates much easier to maintain.\n\nDuring development, my rhythm was straightforward: think through one chunk, implement one chunk. Once local checks looked good, I used `git commit` + `git push` and let Vercel deploy automatically. I also mapped both `xuyunzhe.site` and `www`, so the site became reachable after DNS propagation.\n\nLooking back, the biggest gain wasn’t technical complexity—it was completing the full loop from idea to launch. My current cadence is: ship fast, iterate steadily, and document along the way so the site grows together with my work.",
         status: "launched",
         date: "2026-03-20",
         tech: "Next.js / TypeScript / Tailwind CSS / Vercel",
@@ -228,10 +277,54 @@ const enCopy: SiteCopy = {
         summary:
           "If every cent I earn per second showed live on my Mac, I’d feel a lot more motivated at work.",
         content:
-          "**Idea:** see your **per-second income** live in the Mac **menu bar**—maybe it cheers you up a little at your desk?\n+1 +1 +1 +1…\n\nThis was my first try at shipping a **real app**, and I picked **macOS** first: no need to fight through all the iOS store and permission hoops up front, so the **cost stayed low**; once it worked, I could **just package and ship**, with the **whole pipeline in sight** and a **smaller chance of nasty surprises**.\n\n**Site roadmap:** if I want people to **download my work** from this website, I should add a **proper upload / distribution** flow, dropping **only a Baidu Netdisk link** feels **pretty undignified**…",
+          "**Idea:** see your **per-second income** live in the Mac **menu bar**—maybe it cheers you up a little at your desk?\n+1 +1 +1 +1…\n\nThis was my first try at shipping a **real app**, and I picked **macOS** first: no need to fight through all the iOS store and permission hoops up front, so the **cost stayed low**; once it worked, I could **just package and ship**, with the **whole pipeline in sight** and a **smaller chance of nasty surprises**.\n\n**Site roadmap:** if I want people to **download my work** from this website, I should add a **proper upload / distribution** flow, dropping **only a Baidu Netdisk link** feels **pretty undignified**…\n\n**Mar 30:** salary is sensitive data, so it likely fits better on a more private surface like a watch. Next step is to trim the current feature set into a leaner MVP and ship it on Apple Watch.",
         status: "launched",
         date: "2026-03-26",
+        previewImages: [
+          {
+            src: "/previews/salary-timer-preview-1.png",
+            alt: "SalaryTimer release files",
+          },
+          {
+            src: "/previews/salary-timer-preview-2.png",
+            alt: "SalaryTimer app main panel",
+          },
+          {
+            src: "/previews/salary-timer-preview-3.png",
+            alt: "SalaryTimer menu bar amount",
+          },
+        ],
         tech: "Swift / macOS",
+      },
+      {
+        slug: "next-project-goals",
+        title: "Next Project Goals",
+        summary:
+          "iOS client, WeChat Mini Program, and Apple Watch app—make the core flow work end to end on each surface.",
+        content:
+          "My next step is to expand the same core capability across multiple surfaces: iOS first, then a WeChat Mini Program, and finally Apple Watch, to prove the same business flow can run end to end everywhere.\n\nPhase one is to lock down shared data models and API contracts so all clients read from the same source of truth. Phase two is lightweight UX adaptation for each platform, without trying to perfect everything in one pass.\n\nThe goal isn’t to go wide all at once; it’s to unblock the minimum viable path first: sign in, view key info, and complete the critical action. Once that path is stable, I can iterate on experience and performance per platform.",
+        status: "journal",
+        date: "2026-03-28",
+      },
+      {
+        slug: "ios-long-screenshot",
+        title: "iOS Long Screenshot Feature",
+        summary:
+          "I wish iPhone had better long screenshot support; the small goal is to invoke it from Control Center just like normal screenshots.",
+        content:
+          "The core idea is to make long screenshots as frictionless as regular screenshots: no extra app hopping, no complicated flow, ideally one tap from Control Center.\n\nFor v1, I would focus on a minimum useful path: continuous capture for web/chat content plus quick export. If trigger, stitch, and save work reliably, that already delivers real value.\n\nAfter that, I can iterate on details like preview, partial reorder, export formats, and privacy handling. The goal is not feature bloat, but speed and stability in high-frequency use cases.",
+        status: "idea",
+        date: "2026-03-30",
+      },
+      {
+        slug: "moments-copy-generator",
+        title: "Moments Strong Copy Generator",
+        summary:
+          "It is hard to write stylish-but-not-cringe Moments captions and match photos each time; I want to upload edited images and auto-generate both a 9-grid layout and copy.",
+        content:
+          "This project targets the most time-consuming part before posting to Moments: picking photos, arranging the 3x3 grid, and drafting copy. The ideal flow is simple: I upload edited images, and the system handles layout plus caption suggestions.\n\nV1 will focus on two core capabilities: auto-ordering a 9-grid based on image content/color rhythm, and generating caption drafts by scene (travel, daily life, work) with different tones that feel polished but not forced.\n\nInteraction should stay lightweight: upload -> choose style -> generate. Then I can add manual controls like replacing a single image, locking a slot, caption length tuning, and emoji style toggles for better speed and personalization.\n\nThe final key question is how to judge whether a caption-image combo feels “cringe” or actually good. I want this tied to high-quality public content from Douyin/Xiaohongshu creators, so AI can learn style signals (wording, emotional rhythm, visual-text fit) and output a more realistic quality score aligned with platform taste.",
+        status: "in_progress",
+        date: "2026-03-29",
       },
       {
         slug: "human-drive-vibe-coding",

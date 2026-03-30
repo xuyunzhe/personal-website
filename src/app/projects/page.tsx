@@ -12,6 +12,14 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
   const params = await searchParams;
   const lang = getLang(params.lang);
   const copy = getCopy(lang);
+  const sortedIdeas = [...copy.projects.ideas].sort((a, b) => {
+    const t1 = Date.parse(a.date);
+    const t2 = Date.parse(b.date);
+    if (Number.isNaN(t1) || Number.isNaN(t2) || t1 === t2) {
+      return a.title.localeCompare(b.title);
+    }
+    return t2 - t1;
+  });
 
   const statusLabel =
     lang === "zh"
@@ -40,7 +48,7 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
           {lang === "zh" ? "想法" : "Ideas"}
         </h2>
         <div className="grid gap-5 md:grid-cols-2">
-          {copy.projects.ideas.map((idea) => (
+          {sortedIdeas.map((idea) => (
             <Link
               key={ideaSlug(idea)}
               href={`/projects/ideas/${ideaSlug(idea)}?lang=${lang}`}

@@ -106,6 +106,60 @@ export default function IdeaDetailClient({
         </div>
       </section>
 
+      {idea.status === "launched" ? (
+        <>
+          <section className="space-y-3 rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+            <h2 className="text-base font-semibold tracking-tight">
+              {lang === "zh" ? "预览页面" : "Preview"}
+            </h2>
+            {idea.previewImages && idea.previewImages.length > 0 ? (
+              <div className="grid gap-3 sm:grid-cols-2">
+                {idea.previewImages.map((item, idx) => (
+                  <a
+                    key={`${item.src}-${idx}`}
+                    href={item.src}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group block overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-700"
+                  >
+                    <img
+                      src={item.src}
+                      alt={item.alt ?? `${idea.title} preview ${idx + 1}`}
+                      className="h-48 w-full object-cover transition group-hover:scale-[1.01]"
+                      loading="lazy"
+                    />
+                  </a>
+                ))}
+              </div>
+            ) : (
+              <p className="text-sm text-zinc-600 dark:text-zinc-300">
+                {lang === "zh" ? "暂未添加预览图片。" : "No preview images yet."}
+              </p>
+            )}
+          </section>
+
+          <section className="space-y-3 rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+            <h2 className="text-base font-semibold tracking-tight">
+              {lang === "zh" ? "体验链接" : "Live Link"}
+            </h2>
+            {idea.link ? (
+              <a
+                href={idea.link}
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm font-medium text-blue-600 underline-offset-4 hover:underline dark:text-blue-400"
+              >
+                {idea.link}
+              </a>
+            ) : (
+              <p className="text-sm text-zinc-600 dark:text-zinc-300">
+                {lang === "zh" ? "暂未添加体验链接。" : "No live link yet."}
+              </p>
+            )}
+          </section>
+        </>
+      ) : null}
+
       <section className="flex gap-3">
         <Link
           href={`/projects?lang=${lang}`}
