@@ -56,23 +56,15 @@ export default async function Home({ searchParams }: HomeProps) {
             {lang === "zh" ? "这是我的小猫🐱" : "This is my little cat 🐱"}
           </p>
         </div>
-        <div className="flex flex-wrap gap-3">
-          <Link
-            href={`/projects?lang=${lang}`}
-            className="rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
-          >
-            {copy.hero.primaryCta}
-          </Link>
-          <Link
-            href={`/contact?lang=${lang}`}
-            className="rounded-full border border-zinc-300 px-5 py-2.5 text-sm font-medium hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800"
-          >
-            {copy.hero.secondaryCta}
-          </Link>
-        </div>
       </section>
 
-      <section className="mt-16 grid gap-6 md:grid-cols-2">
+      <div className="flex items-center justify-center gap-3 px-4">
+        <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
+        <span className="select-none text-xs text-zinc-400">—</span>
+        <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
+      </div>
+
+      <section className="mt-12 grid gap-6 md:grid-cols-2">
         <article className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
           <h2 className="text-xl font-semibold">{copy.projects.title}</h2>
           <p className="mt-3 text-zinc-600 dark:text-zinc-300">
