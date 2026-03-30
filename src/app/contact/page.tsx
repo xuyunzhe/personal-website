@@ -25,10 +25,10 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
             {copy.contact.emailLabel}
           </h2>
           <a
-            href="mailto:hello@example.com"
+            href="mailto:450711931@qq.com"
             className="mt-2 inline-block text-lg font-semibold text-blue-600 hover:underline dark:text-blue-400"
           >
-            hello@example.com
+            450711931@qq.com
           </a>
         </article>
 
@@ -37,7 +37,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
             {copy.contact.locationLabel}
           </h2>
           <p className="mt-2 text-lg font-semibold">
-            {lang === "zh" ? "中国 · 上海" : "Shanghai, China"}
+            {lang === "zh" ? "中国·北京" : "China · Beijing"}
           </p>
         </article>
       </section>

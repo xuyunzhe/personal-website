@@ -39,7 +39,7 @@ export default async function Home({ searchParams }: HomeProps) {
         <p className="max-w-2xl whitespace-pre-line text-lg leading-9 text-zinc-600 dark:text-zinc-300">
           {copy.hero.intro}
         </p>
-        <div className="w-full max-w-sm space-y-2">
+        <div className="mx-auto w-full max-w-sm space-y-2">
           <div className="relative overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
             <div className="relative aspect-[4/3] w-full">
               <Image
@@ -52,13 +52,13 @@ export default async function Home({ searchParams }: HomeProps) {
               />
             </div>
           </div>
-          <p className="text-xs text-zinc-500 dark:text-zinc-400">
+          <p className="text-center text-xs text-zinc-500 dark:text-zinc-400">
             {lang === "zh" ? "这是我的小猫🐱" : "This is my little cat 🐱"}
           </p>
         </div>
       </section>
 
-      <div className="flex items-center justify-center gap-3 px-4">
+      <div className="mt-12 flex items-center justify-center gap-3 px-4">
         <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
         <span className="select-none text-xs text-zinc-400">—</span>
         <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
