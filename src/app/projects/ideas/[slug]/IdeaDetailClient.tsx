@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, type ReactNode } from "react";
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import { withLang, type Lang, type SiteCopy } from "@/lib/site-content";
 
 type IdeaItem = SiteCopy["projects"]["ideas"][number];
@@ -32,6 +32,24 @@ export default function IdeaDetailClient({
   lang,
   idea,
 }: IdeaDetailClientProps) {
+  const [previewOpen, setPreviewOpen] = useState<number | null>(null);
+
+  const closePreview = useCallback(() => setPreviewOpen(null), []);
+
+  useEffect(() => {
+    if (previewOpen === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closePreview();
+    };
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [previewOpen, closePreview]);
+
   const statusLabels = useMemo(() => {
     if (lang === "en") {
       return {
@@ -118,22 +136,23 @@ export default function IdeaDetailClient({
               {lang === "zh" ? "预览页面" : "Preview"}
             </h2>
             {idea.previewImages && idea.previewImages.length > 0 ? (
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {idea.previewImages.map((item, idx) => (
-                  <a
+                  <button
                     key={`${item.src}-${idx}`}
-                    href={item.src}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group block overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800"
+                    type="button"
+                    onClick={() => setPreviewOpen(idx)}
+                    className="group block w-full overflow-hidden rounded-xl border border-zinc-200 text-left dark:border-zinc-800"
                   >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={item.src}
                       alt={item.alt ?? `${idea.title} preview ${idx + 1}`}
-                      className="h-48 w-full object-cover transition group-hover:scale-[1.01]"
+                      className="h-48 w-full cursor-zoom-in object-cover transition group-hover:scale-[1.01]"
                       loading="lazy"
+                      draggable={false}
                     />
-                  </a>
+                  </button>
                 ))}
               </div>
             ) : (
@@ -162,6 +181,46 @@ export default function IdeaDetailClient({
               </p>
             )}
           </section>
+          {previewOpen !== null &&
+          idea.previewImages &&
+          idea.previewImages[previewOpen] ? (
+            <div
+              className="fixed inset-0 z-50 overflow-y-auto overflow-x-hidden bg-black/90"
+              role="dialog"
+              aria-modal="true"
+              aria-label={lang === "zh" ? "预览大图" : "Image preview"}
+              onClick={closePreview}
+            >
+              <button
+                type="button"
+                onClick={closePreview}
+                className="fixed right-4 top-4 z-[60] rounded-full border border-white/30 bg-zinc-900/90 px-3 py-1.5 text-sm text-white shadow-lg hover:bg-zinc-800"
+              >
+                {lang === "zh" ? "关闭" : "Close"}
+              </button>
+              <div className="flex min-h-full min-w-0 flex-col items-center justify-center px-4 pb-12 pt-14 sm:px-8">
+                <div
+                  className="flex w-full max-w-[min(96vw,1920px)] flex-col items-center"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    key={idea.previewImages[previewOpen].src}
+                    src={idea.previewImages[previewOpen].src}
+                    alt={
+                      idea.previewImages[previewOpen].alt ??
+                      `${idea.title} preview ${previewOpen + 1}`
+                    }
+                    loading="eager"
+                    decoding="async"
+                    fetchPriority="high"
+                    draggable={false}
+                    className="h-auto w-auto max-h-[min(85vh,85dvh)] max-w-full object-contain"
+                  />
+                </div>
+              </div>
+            </div>
+          ) : null}
         </>
       ) : null}
 

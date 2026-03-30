@@ -126,6 +126,20 @@ const zhCopy: SiteCopy = {
         date: "2026-03-20",
         tech: "Next.js / TypeScript / Tailwind CSS / Vercel",
         link: "https://xuyunzhe.site",
+        previewImages: [
+          {
+            src: "/previews/personal-site-1.png",
+            alt: "首页：我、介绍与项目列表",
+          },
+          {
+            src: "/previews/personal-site-2.png",
+            alt: "项目页：想法与文章",
+          },
+          {
+            src: "/previews/personal-site-3.png",
+            alt: "摄影集：照片网格",
+          },
+        ],
       },
       {
         slug: "salary-timer",
@@ -325,6 +339,20 @@ const enCopy: SiteCopy = {
         date: "2026-03-20",
         tech: "Next.js / TypeScript / Tailwind CSS / Vercel",
         link: "https://xuyunzhe.site",
+        previewImages: [
+          {
+            src: "/previews/personal-site-1.png",
+            alt: "Home: Me section and project list",
+          },
+          {
+            src: "/previews/personal-site-2.png",
+            alt: "Projects page: ideas and articles",
+          },
+          {
+            src: "/previews/personal-site-3.png",
+            alt: "Photography gallery grid",
+          },
+        ],
       },
       {
         slug: "salary-timer",
