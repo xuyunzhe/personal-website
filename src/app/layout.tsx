@@ -41,9 +41,9 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/og.png",
-        width: 1200,
-        height: 630,
-        alt: "xuyunzhe.site",
+        width: 1376,
+        height: 768,
+        alt: "xuyunzhe.site — XYZ",
       },
     ],
   },
