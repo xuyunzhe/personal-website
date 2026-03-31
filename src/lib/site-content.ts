@@ -178,7 +178,7 @@ const zhCopy: SiteCopy = {
         content:
           "第一个版本把从想法到上线的路径跑通了，但现在回看，产品还比较简陋：信息结构薄、交互层次少、视觉表达也偏工具化，不太像一个可以放心拿给用户体验和评价的软件。\n\n这次做 2.0，我想重点尝试前端层面的改动：把信息排版、视觉层级、按钮反馈和关键状态做得更清晰，让它看起来不再像一个内部小工具，而是一个可以直接展示给用户的应用。对我来说，这一版的目标是“先把观感和使用感拉到及格线以上”，再继续细化功能。\n\n另外一个重点是把安装下载体验补齐。相比只放一句说明，我希望用户能在页面里直接看到预览图、知道它现在长什么样，并且通过体验链接一键下载安装包。这样从“看到项目”到“真正装上试用”的路径就完整了，产品价值也更容易被感知。",
         status: "launched",
-        date: "2026-03-30",
+        date: "2026-03-31",
         previewImages: [
           {
             src: "/previews/salary-timer-2-0-preview-1.png",
@@ -207,7 +207,7 @@ const zhCopy: SiteCopy = {
         content:
           "接下来我想把同一套核心能力往多端扩展：先做 iOS 客户端，再做微信小程序，最后补上 Apple Watch 端，验证「同一条业务链路」在不同入口都能跑通。\n\n第一阶段会先把数据结构和接口约束定清楚，保证三端看的是同一份核心数据；第二阶段再针对每个端的交互习惯做轻量适配，不追求一次做到最完整。\n\n我的目标不是一次铺得很大，而是先把最小可用路径打通：能登录、能看到核心信息、能完成关键操作。只要这条链路稳定，后续再逐端做体验和性能优化。",
         status: "journal",
-        date: "2026-03-25",
+        date: "2026-03-24",
       },
       {
         slug: "ios-long-screenshot",
@@ -227,7 +227,7 @@ const zhCopy: SiteCopy = {
         content:
           "这个项目想解决我每次发朋友圈前最耗时的环节：选图、排 9 宫格、想文案。理想状态是我只负责把修好的图片上传，系统自动完成编排和文案建议。\n\n第一版会先做两个核心能力：一是根据图片内容和色调自动组合 9 格顺序；二是基于场景（旅行、生活、工作）生成多种语气的文案草稿，保证「不土」但又有辨识度。\n\n交互上我希望尽量简单：上传图片 -> 选择风格 -> 一键生成。后续再加手动微调能力，比如替换单张、锁定某一格位置、文案长度控制和 emoji 风格开关，让效率和个性化同时成立。\n\n最后一个关键问题是：怎么判断文案和图片搭配到底「土不土」。这里我希望关联抖音 / 小红书上优质博主的公开内容，提取表达风格、用词密度、情绪节奏和图文匹配关系，让 AI 持续学习并做识别评分，给出更接近真实平台审美的建议。",
         status: "in_progress",
-        date: "2026-03-24",
+        date: "2026-03-25",
       },
       {
         slug: "human-drive-vibe-coding",
@@ -256,7 +256,7 @@ const zhCopy: SiteCopy = {
         content:
           "给网站加上留言之后，我关心的其实是两件事：**访客能不能顺畅地完成「想说一句话」**，以及 **页面上呈现的信息是否可信、且没有明显 bug**。最开始，留言区域在首屏和后续交互里表现不一致，这时候我先把问题描述成「用户第一眼看到的东西，和真正用起来是否自洽」，而不是急着钻到实现里。最后的选择是：让表单在访客真实使用的那一侧完整出现，避免「首屏一套、点进去又一套」的割裂感。\n\n另一条线是时间：如果评论旁边赫然写着 **Invalid Date**，对访客来说等于「这条信息不可信」。我的判断很简单：**明显错误的内容，不应该原样摆在用户面前。** 先搞清楚第三方服务到底返回了什么，再决定展示什么：能显示人类可读的时间就显示，对不上就宁可留白，也不拿一串错误字符串糊弄过去。\n\n还有几次是「体验成本」的问题：发帖成功后，上面的留言列表会整段闪一下，但新留言本来就要审核，列表里本来也不会立刻多一条——那次刷新几乎没有带来信息增量，只是在消耗注意力，于是拿掉。表单里去掉邮箱，也是减少「要填什么」的犹豫。项目列表上给每条想法加评论数，是为了让我一眼看到**哪些地方真的在产生对话**，更像在做反馈闭环，而不是只看静态介绍。\n\n在多次改动后遇到了一种场景；**我这边已经改好了，怎么线上还是旧的？** 后来才理清：有时是**改完没 commit、没 push**，远端自然还是上一版；有时是**线上已经跟着部署变了，本地预览却像没动**，要先确认是不是**同一套仓库、同一分支**，再用稳定的开发命令起预览，必要时清一次本地构建缓存。还有几次是**端口被占用**，终端自动换到 3001、3002，浏览器还盯着旧的 localhost，误以为没更新。再后来我会把 **本机预览** 和 **正式站点** 当成两条环境——**没走到发布，访客看到的就不是你手里的那一版**；本地和线上对不上时，我先对齐「代码有没有同步、预览是不是这一个进程、地址有没有看错」，再怀疑是不是改错了。\n\n所以这段 debug 对我来说，更像产品经理日常的那套：**先把问题说清楚（影响谁、表现是什么、期望是什么），再决定先动展示、先动数据，还是先动发布链路。** 少做「试一下行不行」的盲动，多做一点「这一步到底解决的是哪一类问题」的自问——算是我自己的一点入门心得。",
         status: "journal",
-        date: "2026-03-31",
+        date: "2026-03-30",
       },
       {
         slug: "human-ai-collab-iteration-note",
@@ -266,7 +266,7 @@ const zhCopy: SiteCopy = {
         content:
           "工资计时 2.0 这轮做完后，我有一个很明显的感受：现在这种人 + AI 的协作方式还是太复杂了。虽然自然语言沟通很方便，但人在描述想法时，很多关键条件和边界其实并没有说得足够精准，最后常常要在反复来回里补齐。\n\n所以我决定把正在做的另一个项目，直接换一种交互方式：引入 trae 和另一个 agent，做明确分工。\n\n第一个 agent 定位为“产品经理 + 项目经理”：把我的 idea 转成可落地的需求文档，补齐目标、范围、优先级、验收标准，并打通后续上线和部署流程。\n\n第二个 agent 定位为“设计 + 前端”：专注样式美化和交互呈现，把产品体验做得更完整、可展示。\n\n我希望这次调整解决的是协作链路问题：不是继续堆更多对话，而是让每个角色对结果负责，让想法从描述到交付更稳定。",
         status: "journal",
-        date: "2026-03-31",
+        date: "2026-03-30",
       },
     ],
     articles: [
@@ -455,7 +455,7 @@ const enCopy: SiteCopy = {
         content:
           "V1 proved the idea-to-launch path, but in hindsight the product is still rough: thin information architecture, shallow interaction depth, and a visual layer that still feels like an internal tool rather than something I can confidently present to users.\n\nSo the 2.0 goal is not “add a few features,” but upgrade it into something demo-ready, explainable, and iteration-friendly. My approach is multi-agent collaboration: one agent for product decomposition (user scenarios, core flows, prioritization), one for interaction/UI outputs (key screens, feedback states, edge cases), and one for implementation constraints (technical boundaries, release cadence, risk list).\n\nThe value is that I no longer get a single “code answer”; I get aligned perspectives on why this direction, what to build first, and how to evaluate completion. The expected output is an optimized product plan, reviewable design drafts, and a software version that is genuinely ready to show to users.",
         status: "launched",
-        date: "2026-03-30",
+        date: "2026-03-31",
         previewImages: [
           {
             src: "/previews/salary-timer-2-0-preview-1.png",
@@ -484,7 +484,7 @@ const enCopy: SiteCopy = {
         content:
           "My next step is to expand the same core capability across multiple surfaces: iOS first, then a WeChat Mini Program, and finally Apple Watch, to prove the same business flow can run end to end everywhere.\n\nPhase one is to lock down shared data models and API contracts so all clients read from the same source of truth. Phase two is lightweight UX adaptation for each platform, without trying to perfect everything in one pass.\n\nThe goal isn’t to go wide all at once; it’s to unblock the minimum viable path first: sign in, view key info, and complete the critical action. Once that path is stable, I can iterate on experience and performance per platform.",
         status: "journal",
-        date: "2026-03-25",
+        date: "2026-03-24",
       },
       {
         slug: "ios-long-screenshot",
@@ -504,7 +504,7 @@ const enCopy: SiteCopy = {
         content:
           "This project targets the most time-consuming part before posting to Moments: picking photos, arranging the 3x3 grid, and drafting copy. The ideal flow is simple: I upload edited images, and the system handles layout plus caption suggestions.\n\nV1 will focus on two core capabilities: auto-ordering a 9-grid based on image content/color rhythm, and generating caption drafts by scene (travel, daily life, work) with different tones that feel polished but not forced.\n\nInteraction should stay lightweight: upload -> choose style -> generate. Then I can add manual controls like replacing a single image, locking a slot, caption length tuning, and emoji style toggles for better speed and personalization.\n\nThe final key question is how to judge whether a caption-image combo feels “cringe” or actually good. I want this tied to high-quality public content from Douyin/Xiaohongshu creators, so AI can learn style signals (wording, emotional rhythm, visual-text fit) and output a more realistic quality score aligned with platform taste.",
         status: "in_progress",
-        date: "2026-03-24",
+        date: "2026-03-25",
       },
       {
         slug: "human-drive-vibe-coding",
@@ -534,7 +534,7 @@ const enCopy: SiteCopy = {
         content:
           "After I added comments, what I really cared about was whether **visitors could finish “leave a note” smoothly**, and whether **what they saw felt trustworthy and free of obvious bugs**. At first, the comment area felt inconsistent between the first paint and what happened after you interacted. I framed it as a product question first: **does the first screen match the actual experience**, not as an implementation puzzle. The direction I chose was to let the form show up fully in the environment where people actually type, so we don’t get two different stories between “landing” and “using.”\n\nTime stamps were another issue: if a comment says **Invalid Date**, that reads as “this information is broken.” My rule became simple: **don’t mirror obvious junk to users.** Understand what the third-party service actually returns, then decide what to show—show a human-readable time when we can; when we can’t, I’d rather show nothing than a scary string.\n\nA few fixes were about **experience cost**: after posting, the whole list flashed, but moderated comments don’t appear instantly anyway—so that refresh added motion without new information. I removed it. Dropping the email field reduced hesitation at submit. On the projects list I added a comment count badge so I can see **where conversations are actually happening**—more like closing the feedback loop than staring at static blurbs.\n\nAfter many iterations I hit a recurring situation: **“I already changed it—why hasn’t the site moved?”** Sometimes I simply **hadn’t committed or pushed**, so production stayed on the previous release. Sometimes **production was already updated** while **local preview looked stale**—then I check I’m on the **same repo and branch**, restart dev with a reliable setup, and occasionally clear the local build cache. A few times **the port shifted** (3001, 3002…) because the default was taken, and I was still staring at the old URL, thinking nothing had changed. I now treat **localhost preview** and the **live domain** as two environments: **if it isn’t shipped, visitors don’t see your version**. When local and production disagree, I first align **code sync, which dev process I’m actually running, and whether I’m on the right address**—before I doubt that I edited the wrong thing.\n\nSo this round of debugging feels closer to day-to-day product work: **state the problem clearly (who it hits, what it looks like, what “good” is), then decide whether to fix presentation, data, or the release path.** Fewer blind “try one line” attempts; more asking **which class of problem this step actually solves**—a small but real step for me.",
         status: "journal",
-        date: "2026-03-31",
+        date: "2026-03-30",
       },
       {
         slug: "human-ai-collab-iteration-note",
@@ -544,7 +544,7 @@ const enCopy: SiteCopy = {
         content:
           "After finishing Salary Timer 2.0, one thing became obvious to me: my current human+AI collaboration model is still too complex. Natural-language interaction is convenient, but many critical constraints and boundaries are not described precisely enough in the first pass, so too much effort goes into back-and-forth clarification.\n\nSo for the project I am building now, I am changing the interaction model and introducing trae plus another agent with explicit role ownership.\n\nThe first agent acts as “PM + project manager”: turn my ideas into executable requirement docs, clarify goals/scope/priorities/acceptance criteria, and connect the remaining launch and deployment workflow.\n\nThe second agent acts as “design + frontend”: own visual polish and interaction presentation, and make the product feel complete and demo-ready.\n\nWhat I want to improve is the collaboration chain itself: not more conversations, but clearer responsibility per role, so ideas can move from description to delivery with less drift.",
         status: "journal",
-        date: "2026-03-31",
+        date: "2026-03-30",
       },
     ],
     articles: [
