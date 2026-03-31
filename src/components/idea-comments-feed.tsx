@@ -18,7 +18,6 @@ function replyList(c: CusdisComment): CusdisComment[] {
 type IdeaCommentsFeedProps = {
   pageId: string;
   lang: Lang;
-  refreshKey: number;
 };
 
 /** Cusdis 有时会把无法解析的时间落成字面量 "Invalid Date"，需忽略并改用 createdAt */
@@ -162,7 +161,6 @@ function CommentItem({
 export default function IdeaCommentsFeed({
   pageId,
   lang,
-  refreshKey,
 }: IdeaCommentsFeedProps) {
   const labels = getCusdisLocale(lang);
   const [items, setItems] = useState<CusdisComment[]>([]);
@@ -193,7 +191,7 @@ export default function IdeaCommentsFeed({
 
   useEffect(() => {
     void load();
-  }, [load, refreshKey]);
+  }, [load]);
 
   if (loading) {
     return (
