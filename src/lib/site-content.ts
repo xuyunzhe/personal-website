@@ -215,6 +215,16 @@ const zhCopy: SiteCopy = {
         status: "launched",
         date: "2026-03-31",
       },
+      {
+        slug: "debug-first-experience",
+        title: "debug 初体验",
+        summary:
+          "功能越加越多之后，一改就容易冒出体验或展示上的问题；我开始习惯先把现象说清楚，再决定从哪里下手收敛。",
+        content:
+          "给网站加上留言之后，我关心的其实是两件事：**访客能不能顺畅地完成「想说一句话」**，以及 **页面上呈现的信息是否可信、且没有明显 bug**。最开始，留言区域在首屏和后续交互里表现不一致，这时候我先把问题描述成「用户第一眼看到的东西，和真正用起来是否自洽」，而不是急着钻到实现里。最后的选择是：让表单在访客真实使用的那一侧完整出现，避免「首屏一套、点进去又一套」的割裂感。\n\n另一条线是时间：如果评论旁边赫然写着 **Invalid Date**，对访客来说等于「这条信息不可信」。我的判断很简单：**明显错误的内容，不应该原样摆在用户面前。** 先搞清楚第三方服务到底返回了什么，再决定展示什么：能显示人类可读的时间就显示，对不上就宁可留白，也不拿一串错误字符串糊弄过去。\n\n还有几次是「体验成本」的问题：发帖成功后，上面的留言列表会整段闪一下，但新留言本来就要审核，列表里本来也不会立刻多一条——那次刷新几乎没有带来信息增量，只是在消耗注意力，于是拿掉。表单里去掉邮箱，也是减少「要填什么」的犹豫。项目列表上给每条想法加评论数，是为了让我一眼看到**哪些地方真的在产生对话**，更像在做反馈闭环，而不是只看静态介绍。\n\n在多次改动后遇到了一种场景；**我这边已经改好了，怎么线上还是旧的？** 后来才理清：有时是**改完没 commit、没 push**，远端自然还是上一版；有时是**线上已经跟着部署变了，本地预览却像没动**，要先确认是不是**同一套仓库、同一分支**，再用稳定的开发命令起预览，必要时清一次本地构建缓存。还有几次是**端口被占用**，终端自动换到 3001、3002，浏览器还盯着旧的 localhost，误以为没更新。再后来我会把 **本机预览** 和 **正式站点** 当成两条环境——**没走到发布，访客看到的就不是你手里的那一版**；本地和线上对不上时，我先对齐「代码有没有同步、预览是不是这一个进程、地址有没有看错」，再怀疑是不是改错了。\n\n所以这段 debug 对我来说，更像产品经理日常的那套：**先把问题说清楚（影响谁、表现是什么、期望是什么），再决定先动展示、先动数据，还是先动发布链路。** 少做「试一下行不行」的盲动，多做一点「这一步到底解决的是哪一类问题」的自问——算是我自己的一点入门心得。",
+        status: "journal",
+        date: "2026-03-31",
+      },
     ],
     articles: [
       {
@@ -437,6 +447,16 @@ const enCopy: SiteCopy = {
         content:
           "The site is mostly one-way today: projects, ideas, and photography. Next I want to add comments or a lightweight guestbook so visitors can leave thoughts, questions, or references—small conversations instead of a broadcast.\n\nFor v1 I’ll favor approaches that are cheap to ship and maintain: a third-party comment embed, or a simple message form with light moderation. The goal is to unblock \"people can talk back\" first, then iterate on UX and safety.\n\nI’m not aiming for a full community; I want a convenient place for like-minded people to connect, similar to classic blog comments.\n\nUpdate 01: Comments are live now, but I still want more emotional payoff—likes, for example. Next I’ll add likes; once there’s more work on the site, I’ll add a “want it” signal too.",
         status: "launched",
+        date: "2026-03-31",
+      },
+      {
+        slug: "debug-first-experience",
+        title: "Debug: First Real Session",
+        summary:
+          "As I shipped more, small changes started surfacing UX or display issues; I learned to name the problem first, then pick where to fix.",
+        content:
+          "After I added comments, what I really cared about was whether **visitors could finish “leave a note” smoothly**, and whether **what they saw felt trustworthy and free of obvious bugs**. At first, the comment area felt inconsistent between the first paint and what happened after you interacted. I framed it as a product question first: **does the first screen match the actual experience**, not as an implementation puzzle. The direction I chose was to let the form show up fully in the environment where people actually type, so we don’t get two different stories between “landing” and “using.”\n\nTime stamps were another issue: if a comment says **Invalid Date**, that reads as “this information is broken.” My rule became simple: **don’t mirror obvious junk to users.** Understand what the third-party service actually returns, then decide what to show—show a human-readable time when we can; when we can’t, I’d rather show nothing than a scary string.\n\nA few fixes were about **experience cost**: after posting, the whole list flashed, but moderated comments don’t appear instantly anyway—so that refresh added motion without new information. I removed it. Dropping the email field reduced hesitation at submit. On the projects list I added a comment count badge so I can see **where conversations are actually happening**—more like closing the feedback loop than staring at static blurbs.\n\nAfter many iterations I hit a recurring situation: **“I already changed it—why hasn’t the site moved?”** Sometimes I simply **hadn’t committed or pushed**, so production stayed on the previous release. Sometimes **production was already updated** while **local preview looked stale**—then I check I’m on the **same repo and branch**, restart dev with a reliable setup, and occasionally clear the local build cache. A few times **the port shifted** (3001, 3002…) because the default was taken, and I was still staring at the old URL, thinking nothing had changed. I now treat **localhost preview** and the **live domain** as two environments: **if it isn’t shipped, visitors don’t see your version**. When local and production disagree, I first align **code sync, which dev process I’m actually running, and whether I’m on the right address**—before I doubt that I edited the wrong thing.\n\nSo this round of debugging feels closer to day-to-day product work: **state the problem clearly (who it hits, what it looks like, what “good” is), then decide whether to fix presentation, data, or the release path.** Fewer blind “try one line” attempts; more asking **which class of problem this step actually solves**—a small but real step for me.",
+        status: "journal",
         date: "2026-03-31",
       },
     ],
