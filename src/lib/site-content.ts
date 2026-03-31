@@ -171,6 +171,35 @@ const zhCopy: SiteCopy = {
         tech: "Swift / macOS",
       },
       {
+        slug: "salary-timer-2-0",
+        title: "工资计时器 2.0",
+        summary:
+          "路径跑通后，我希望把它从“能用”升级成“能展示给用户的产品”，引入多 agent 协作来做方案、设计和体验升级。",
+        content:
+          "第一个版本把从想法到上线的路径跑通了，但现在回看，产品还比较简陋：信息结构薄、交互层次少、视觉表达也偏工具化，不太像一个可以放心拿给用户体验和评价的软件。\n\n这次做 2.0，我想重点尝试前端层面的改动：把信息排版、视觉层级、按钮反馈和关键状态做得更清晰，让它看起来不再像一个内部小工具，而是一个可以直接展示给用户的应用。对我来说，这一版的目标是“先把观感和使用感拉到及格线以上”，再继续细化功能。\n\n另外一个重点是把安装下载体验补齐。相比只放一句说明，我希望用户能在页面里直接看到预览图、知道它现在长什么样，并且通过体验链接一键下载安装包。这样从“看到项目”到“真正装上试用”的路径就完整了，产品价值也更容易被感知。",
+        status: "launched",
+        date: "2026-03-31",
+        previewImages: [
+          {
+            src: "/previews/salary-timer-2-0-preview-1.png",
+            alt: "Salary Timer 2.0 preview 1",
+          },
+          {
+            src: "/previews/salary-timer-2-0-preview-2.png",
+            alt: "Salary Timer 2.0 preview 2",
+          },
+          {
+            src: "/previews/salary-timer-2-0-preview-3.png",
+            alt: "Salary Timer 2.0 preview 3",
+          },
+          {
+            src: "/previews/salary-timer-2-0-preview-4.png",
+            alt: "Salary Timer 2.0 preview 4",
+          },
+        ],
+        link: "/downloads/SalaryTimer-Installer-v1.0.pkg",
+      },
+      {
         slug: "next-project-goals",
         title: "接下来的项目目标",
         summary:
@@ -407,6 +436,35 @@ const enCopy: SiteCopy = {
           },
         ],
         tech: "Swift / macOS",
+      },
+      {
+        slug: "salary-timer-2-0",
+        title: "Salary Timer 2.0",
+        summary:
+          "Now that the core path is proven, I want to evolve it from “usable” to a product I can confidently demo, using multi-agent collaboration for strategy, design, and UX polish.",
+        content:
+          "V1 proved the idea-to-launch path, but in hindsight the product is still rough: thin information architecture, shallow interaction depth, and a visual layer that still feels like an internal tool rather than something I can confidently present to users.\n\nSo the 2.0 goal is not “add a few features,” but upgrade it into something demo-ready, explainable, and iteration-friendly. My approach is multi-agent collaboration: one agent for product decomposition (user scenarios, core flows, prioritization), one for interaction/UI outputs (key screens, feedback states, edge cases), and one for implementation constraints (technical boundaries, release cadence, risk list).\n\nThe value is that I no longer get a single “code answer”; I get aligned perspectives on why this direction, what to build first, and how to evaluate completion. The expected output is an optimized product plan, reviewable design drafts, and a software version that is genuinely ready to show to users.",
+        status: "launched",
+        date: "2026-03-31",
+        previewImages: [
+          {
+            src: "/previews/salary-timer-2-0-preview-1.png",
+            alt: "Salary Timer 2.0 preview 1",
+          },
+          {
+            src: "/previews/salary-timer-2-0-preview-2.png",
+            alt: "Salary Timer 2.0 preview 2",
+          },
+          {
+            src: "/previews/salary-timer-2-0-preview-3.png",
+            alt: "Salary Timer 2.0 preview 3",
+          },
+          {
+            src: "/previews/salary-timer-2-0-preview-4.png",
+            alt: "Salary Timer 2.0 preview 4",
+          },
+        ],
+        link: "/downloads/SalaryTimer-Installer-v1.0.pkg",
       },
       {
         slug: "next-project-goals",
