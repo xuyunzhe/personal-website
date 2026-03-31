@@ -8,7 +8,6 @@ type IdeaCommentsFormProps = {
   pageId: string;
   lang: Lang;
   ideaTitle: string;
-  onSuccess: () => void;
 };
 
 const NICK_MAX = 50;
@@ -18,7 +17,6 @@ export default function IdeaCommentsForm({
   pageId,
   lang,
   ideaTitle,
-  onSuccess,
 }: IdeaCommentsFormProps) {
   /** 表单仅在客户端挂载后渲染，避免 input 等属性在 SSR 与首帧 hydration 不一致 */
   const [mounted, setMounted] = useState(false);
@@ -28,7 +26,6 @@ export default function IdeaCommentsForm({
 
   const labels = getCusdisLocale(lang);
   const [nickname, setNickname] = useState("");
-  const [email, setEmail] = useState("");
   const [content, setContent] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
@@ -56,7 +53,6 @@ export default function IdeaCommentsForm({
         body: JSON.stringify({
           pageId,
           nickname: n,
-          email: email.trim(),
           content: c,
           pageUrl: window.location.href,
           pageTitle: ideaTitle,
@@ -69,10 +65,8 @@ export default function IdeaCommentsForm({
       }
       await res.json().catch(() => null);
       setNickname("");
-      setEmail("");
       setContent("");
       setMessage(labels.comment_has_been_sent);
-      onSuccess();
     } catch {
       setError(labels.post_submit_error);
     } finally {
@@ -90,10 +84,7 @@ export default function IdeaCommentsForm({
         aria-busy="true"
         aria-label={lang === "zh" ? "表单加载中" : "Loading form"}
       >
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div className="h-[42px] rounded-lg bg-zinc-100 dark:bg-zinc-800" />
-          <div className="h-[42px] rounded-lg bg-zinc-100 dark:bg-zinc-800" />
-        </div>
+        <div className="h-[42px] rounded-lg bg-zinc-100 dark:bg-zinc-800" />
         <div className="h-[120px] rounded-lg bg-zinc-100 dark:bg-zinc-800" />
         <div className="h-9 w-28 rounded-full bg-zinc-200 dark:bg-zinc-700" />
       </div>
@@ -102,46 +93,25 @@ export default function IdeaCommentsForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid gap-4 sm:grid-cols-2">
-        <div className="space-y-2">
-          <label
-            htmlFor="cusdis-nickname"
-            className="block text-sm font-medium text-zinc-800 dark:text-zinc-200"
-          >
-            {labels.nickname}
-          </label>
-          <input
-            id="cusdis-nickname"
-            name="nickname"
-            type="text"
-            autoComplete="nickname"
-            maxLength={NICK_MAX}
-            placeholder={labels.nickname_placeholder ?? ""}
-            value={nickname}
-            onChange={(e) => setNickname(e.target.value)}
-            className={inputClass}
-            disabled={submitting}
-          />
-        </div>
-        <div className="space-y-2">
-          <label
-            htmlFor="cusdis-email"
-            className="block text-sm font-medium text-zinc-800 dark:text-zinc-200"
-          >
-            {labels.email}
-          </label>
-          <input
-            id="cusdis-email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            maxLength={120}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className={inputClass}
-            disabled={submitting}
-          />
-        </div>
+      <div className="space-y-2">
+        <label
+          htmlFor="cusdis-nickname"
+          className="block text-sm font-medium text-zinc-800 dark:text-zinc-200"
+        >
+          {labels.nickname}
+        </label>
+        <input
+          id="cusdis-nickname"
+          name="nickname"
+          type="text"
+          autoComplete="nickname"
+          maxLength={NICK_MAX}
+          placeholder={labels.nickname_placeholder ?? ""}
+          value={nickname}
+          onChange={(e) => setNickname(e.target.value)}
+          className={inputClass}
+          disabled={submitting}
+        />
       </div>
       <div className="space-y-2">
         <label

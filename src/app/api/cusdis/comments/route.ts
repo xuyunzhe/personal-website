@@ -32,7 +32,6 @@ type PostBody = {
   pageId?: string;
   nickname?: string;
   content?: string;
-  email?: string;
   pageUrl?: string;
   pageTitle?: string;
   parentId?: string | null;
@@ -61,7 +60,6 @@ export async function POST(request: Request) {
 
   let nickname = String(body.nickname ?? "").trim();
   const content = String(body.content ?? "").trim();
-  const email = String(body.email ?? "").trim();
   const pageUrl = String(body.pageUrl ?? "").trim();
   const pageTitle = String(body.pageTitle ?? "").trim();
 
@@ -82,7 +80,7 @@ export async function POST(request: Request) {
     pageId,
     nickname,
     content,
-    email,
+    email: "",
     pageUrl,
     pageTitle,
     parentId: body.parentId ?? null,

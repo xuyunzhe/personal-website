@@ -8,7 +8,6 @@ export type CusdisLocaleStrings = {
   powered_by: string;
   post_comment: string;
   loading: string;
-  email: string;
   nickname: string;
   reply_placeholder: string;
   reply_btn: string;
@@ -29,7 +28,6 @@ const zh: CusdisLocaleStrings = {
   powered_by: "评论由 Cusdis 提供",
   post_comment: "发布留言",
   loading: "加载中…",
-  email: "邮箱（选填）",
   nickname: "昵称（选填）",
   nickname_placeholder: "留空则随机生成昵称",
   nickname_too_long: "昵称过长（最多 50 字）",
@@ -50,7 +48,6 @@ const en: CusdisLocaleStrings = {
   powered_by: "Comments powered by Cusdis",
   post_comment: "Post comment",
   loading: "Loading",
-  email: "Email (optional)",
   nickname: "Nickname (optional)",
   nickname_placeholder: "Leave blank for a random name",
   nickname_too_long: "Nickname is too long (max 50 characters).",
