@@ -1,9 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
-import IdeaCommentCountBadge from "@/components/idea-comment-count-badge";
+import ProjectsIdeasSection from "@/components/projects-ideas-section";
 import SiteLayout from "@/components/site-layout";
 import { getCusdisCommentCount } from "@/lib/cusdis-comment-count";
-import { getCopy, getLang, withLang } from "@/lib/site-content";
+import { getCopy, getLang } from "@/lib/site-content";
 import { ideaSlug } from "@/lib/slug";
 
 type ProjectsPageProps = {
@@ -53,51 +52,11 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
           <p className="mt-3 text-zinc-600 dark:text-zinc-300">{copy.projects.intro}</p>
         </section>
 
-        <section className="space-y-4 rounded-2xl border border-zinc-200 p-5 md:p-7 dark:border-zinc-800">
-          <h2 className="text-xl font-semibold tracking-tight">
-            {lang === "zh" ? "想法" : "Ideas"}
-          </h2>
-          <div className="grid gap-5 md:grid-cols-2">
-            {ideasWithCommentCounts.map(({ idea, commentCount }) => (
-              <Link
-                key={ideaSlug(idea)}
-                href={withLang(`/projects/ideas/${ideaSlug(idea)}`, lang)}
-                className="block h-full"
-              >
-                <article className="flex h-full flex-col rounded-xl border border-zinc-200 p-5 transition hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-950">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="min-w-0 flex-1">
-                      <h3 className="text-lg font-semibold">{idea.title}</h3>
-                      <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
-                        {idea.date}
-                      </p>
-                    </div>
-                    <span
-                      className={[
-                        "shrink-0 rounded-full px-3 py-1 text-xs font-medium",
-                        idea.status === "in_progress"
-                          ? "bg-amber-100 text-amber-900 dark:bg-amber-900/30 dark:text-amber-200"
-                          : idea.status === "launched"
-                            ? "bg-emerald-100 text-emerald-900 dark:bg-emerald-900/30 dark:text-emerald-200"
-                            : idea.status === "journal"
-                              ? "bg-violet-100 text-violet-900 dark:bg-violet-900/30 dark:text-violet-200"
-                              : "bg-zinc-100 text-zinc-900 dark:bg-zinc-800/50 dark:text-zinc-200",
-                      ].join(" ")}
-                    >
-                      {statusLabel[idea.status]}
-                    </span>
-                  </div>
-                  <p className="mt-2 flex-1 text-zinc-600 dark:text-zinc-300">
-                    {idea.summary}
-                  </p>
-                  <div className="mt-3 flex justify-end">
-                    <IdeaCommentCountBadge count={commentCount} lang={lang} />
-                  </div>
-                </article>
-              </Link>
-            ))}
-          </div>
-        </section>
+        <ProjectsIdeasSection
+          lang={lang}
+          items={ideasWithCommentCounts}
+          statusLabels={statusLabel}
+        />
 
         <section className="space-y-4 rounded-2xl border border-zinc-200 p-5 md:p-7 dark:border-zinc-800">
           <h2 className="text-xl font-semibold tracking-tight">
