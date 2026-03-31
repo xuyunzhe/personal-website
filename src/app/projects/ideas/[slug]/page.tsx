@@ -24,7 +24,7 @@ export default async function IdeaDetailPage({
 
   return (
     <SiteLayout lang={lang}>
-      <IdeaDetailClient lang={lang} idea={idea} />
+      <IdeaDetailClient lang={lang} idea={idea} slug={p.slug} />
     </SiteLayout>
   );
 }

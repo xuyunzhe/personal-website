@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
+import IdeaComments from "@/components/idea-comments";
 import { withLang, type Lang, type SiteCopy } from "@/lib/site-content";
 
 type IdeaItem = SiteCopy["projects"]["ideas"][number];
@@ -26,11 +27,14 @@ function parseBoldSegments(text: string): ReactNode[] {
 type IdeaDetailClientProps = {
   lang: Lang;
   idea: IdeaItem;
+  /** URL segment for this idea; used by comments API. */
+  slug: string;
 };
 
 export default function IdeaDetailClient({
   lang,
   idea,
+  slug,
 }: IdeaDetailClientProps) {
   const [previewOpen, setPreviewOpen] = useState<number | null>(null);
 
@@ -223,6 +227,8 @@ export default function IdeaDetailClient({
           ) : null}
         </>
       ) : null}
+
+      <IdeaComments slug={slug} lang={lang} ideaTitle={idea.title} />
 
       <Link
         href={withLang("/projects", lang)}
