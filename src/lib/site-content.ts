@@ -258,6 +258,16 @@ const zhCopy: SiteCopy = {
         status: "journal",
         date: "2026-03-31",
       },
+      {
+        slug: "human-ai-collab-iteration-note",
+        title: "人机协作方式调整记录",
+        summary:
+          "工资计时 2.0 之后，我意识到当前的人+AI协作过于复杂，正在调整为更明确的双 Agent 分工。",
+        content:
+          "工资计时 2.0 这轮做完后，我有一个很明显的感受：现在这种人 + AI 的协作方式还是太复杂了。虽然自然语言沟通很方便，但人在描述想法时，很多关键条件和边界其实并没有说得足够精准，最后常常要在反复来回里补齐。\n\n所以我决定把正在做的另一个项目，直接换一种交互方式：引入 trae 和另一个 agent，做明确分工。\n\n第一个 agent 定位为“产品经理 + 项目经理”：把我的 idea 转成可落地的需求文档，补齐目标、范围、优先级、验收标准，并打通后续上线和部署流程。\n\n第二个 agent 定位为“设计 + 前端”：专注样式美化和交互呈现，把产品体验做得更完整、可展示。\n\n我希望这次调整解决的是协作链路问题：不是继续堆更多对话，而是让每个角色对结果负责，让想法从描述到交付更稳定。",
+        status: "journal",
+        date: "2026-03-31",
+      },
     ],
     articles: [
       {
@@ -523,6 +533,16 @@ const enCopy: SiteCopy = {
           "As I shipped more, small changes started surfacing UX or display issues; I learned to name the problem first, then pick where to fix.",
         content:
           "After I added comments, what I really cared about was whether **visitors could finish “leave a note” smoothly**, and whether **what they saw felt trustworthy and free of obvious bugs**. At first, the comment area felt inconsistent between the first paint and what happened after you interacted. I framed it as a product question first: **does the first screen match the actual experience**, not as an implementation puzzle. The direction I chose was to let the form show up fully in the environment where people actually type, so we don’t get two different stories between “landing” and “using.”\n\nTime stamps were another issue: if a comment says **Invalid Date**, that reads as “this information is broken.” My rule became simple: **don’t mirror obvious junk to users.** Understand what the third-party service actually returns, then decide what to show—show a human-readable time when we can; when we can’t, I’d rather show nothing than a scary string.\n\nA few fixes were about **experience cost**: after posting, the whole list flashed, but moderated comments don’t appear instantly anyway—so that refresh added motion without new information. I removed it. Dropping the email field reduced hesitation at submit. On the projects list I added a comment count badge so I can see **where conversations are actually happening**—more like closing the feedback loop than staring at static blurbs.\n\nAfter many iterations I hit a recurring situation: **“I already changed it—why hasn’t the site moved?”** Sometimes I simply **hadn’t committed or pushed**, so production stayed on the previous release. Sometimes **production was already updated** while **local preview looked stale**—then I check I’m on the **same repo and branch**, restart dev with a reliable setup, and occasionally clear the local build cache. A few times **the port shifted** (3001, 3002…) because the default was taken, and I was still staring at the old URL, thinking nothing had changed. I now treat **localhost preview** and the **live domain** as two environments: **if it isn’t shipped, visitors don’t see your version**. When local and production disagree, I first align **code sync, which dev process I’m actually running, and whether I’m on the right address**—before I doubt that I edited the wrong thing.\n\nSo this round of debugging feels closer to day-to-day product work: **state the problem clearly (who it hits, what it looks like, what “good” is), then decide whether to fix presentation, data, or the release path.** Fewer blind “try one line” attempts; more asking **which class of problem this step actually solves**—a small but real step for me.",
+        status: "journal",
+        date: "2026-03-31",
+      },
+      {
+        slug: "human-ai-collab-iteration-note",
+        title: "Adjusting My Human+AI Collaboration Model",
+        summary:
+          "After Salary Timer 2.0, I realized my current human+AI workflow is too complex, so I am moving to clearer two-agent role ownership.",
+        content:
+          "After finishing Salary Timer 2.0, one thing became obvious to me: my current human+AI collaboration model is still too complex. Natural-language interaction is convenient, but many critical constraints and boundaries are not described precisely enough in the first pass, so too much effort goes into back-and-forth clarification.\n\nSo for the project I am building now, I am changing the interaction model and introducing trae plus another agent with explicit role ownership.\n\nThe first agent acts as “PM + project manager”: turn my ideas into executable requirement docs, clarify goals/scope/priorities/acceptance criteria, and connect the remaining launch and deployment workflow.\n\nThe second agent acts as “design + frontend”: own visual polish and interaction presentation, and make the product feel complete and demo-ready.\n\nWhat I want to improve is the collaboration chain itself: not more conversations, but clearer responsibility per role, so ideas can move from description to delivery with less drift.",
         status: "journal",
         date: "2026-03-31",
       },
