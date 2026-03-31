@@ -6,6 +6,7 @@ export type CusdisComment = {
   parsedContent?: string;
   parsedCreatedAt?: string;
   createdAt?: string;
+  updatedAt?: string;
   replies?: { data: CusdisComment[] } | CusdisComment[];
   moderator?: { displayName?: string };
 };

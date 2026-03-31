@@ -21,10 +21,35 @@ type IdeaCommentsFeedProps = {
   refreshKey: number;
 };
 
+/** Cusdis 有时会把无法解析的时间落成字面量 "Invalid Date"，需忽略并改用 createdAt */
+function isBadDateDisplay(s: string | undefined): boolean {
+  if (!s?.trim()) return true;
+  const t = s.trim();
+  return t === "Invalid Date" || /^invalid date$/i.test(t);
+}
+
+function parseCusdisDate(value: unknown): Date | null {
+  if (value == null) return null;
+  if (typeof value === "number" && Number.isFinite(value)) {
+    const d = new Date(value);
+    return Number.isNaN(d.getTime()) ? null : d;
+  }
+  if (typeof value === "string" && value.trim()) {
+    const d = new Date(value);
+    return Number.isNaN(d.getTime()) ? null : d;
+  }
+  return null;
+}
+
 function formatWhen(comment: CusdisComment, lang: Lang): string {
-  if (comment.parsedCreatedAt?.trim()) return comment.parsedCreatedAt;
-  const d = comment.createdAt ? new Date(comment.createdAt) : null;
-  if (!d || Number.isNaN(d.getTime())) return "";
+  const parsed = comment.parsedCreatedAt?.trim();
+  if (parsed && !isBadDateDisplay(parsed)) {
+    return parsed;
+  }
+  const d =
+    parseCusdisDate(comment.createdAt) ??
+    parseCusdisDate(comment.updatedAt);
+  if (!d) return "";
   try {
     return new Intl.DateTimeFormat(lang === "zh" ? "zh-CN" : "en-US", {
       dateStyle: "medium",
@@ -33,6 +58,14 @@ function formatWhen(comment: CusdisComment, lang: Lang): string {
   } catch {
     return d.toLocaleString();
   }
+}
+
+function dateTimeIso(comment: CusdisComment): string | undefined {
+  const d =
+    parseCusdisDate(comment.createdAt) ??
+    parseCusdisDate(comment.updatedAt);
+  if (!d) return undefined;
+  return d.toISOString();
 }
 
 function Avatar({
@@ -86,6 +119,7 @@ function CommentItem({
   depth: number;
 }) {
   const when = formatWhen(comment, lang);
+  const whenIso = dateTimeIso(comment);
   const replies = replyList(comment);
 
   return (
@@ -99,7 +133,7 @@ function CommentItem({
           {when ? (
             <time
               className="text-xs text-zinc-500 dark:text-zinc-400"
-              dateTime={comment.createdAt}
+              {...(whenIso ? { dateTime: whenIso } : {})}
             >
               {when}
             </time>
