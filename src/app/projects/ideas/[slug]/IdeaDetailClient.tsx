@@ -1,28 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import IdeaComments from "@/components/idea-comments";
+import { parseBoldSegments } from "@/lib/parse-bold-segments";
 import { withLang, type Lang, type SiteCopy } from "@/lib/site-content";
 
 type IdeaItem = SiteCopy["projects"]["ideas"][number];
-
-function parseBoldSegments(text: string): ReactNode[] {
-  const parts = text.split(/(\*\*[^*]+\*\*)/g);
-  return parts.map((part, i) => {
-    if (part.startsWith("**") && part.endsWith("**")) {
-      return (
-        <strong
-          key={i}
-          className="font-semibold text-zinc-950 dark:text-zinc-50"
-        >
-          {part.slice(2, -2)}
-        </strong>
-      );
-    }
-    return <span key={i}>{part}</span>;
-  });
-}
 
 type IdeaDetailClientProps = {
   lang: Lang;

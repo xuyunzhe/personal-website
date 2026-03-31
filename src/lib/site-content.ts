@@ -25,9 +25,13 @@ type IdeaItem = {
 };
 
 type ArticleItem = {
+  /** 有正文时用于 `/projects/articles/[slug]` */
+  slug?: string;
   title: string;
   summary: string;
   coverSrc: string;
+  content?: string;
+  date?: string;
 };
 
 type PostItem = {
@@ -228,9 +232,14 @@ const zhCopy: SiteCopy = {
     ],
     articles: [
       {
-        title: "Idea 到上线的最短路径",
-        summary: "从需求澄清、原型验证到交付的轻量方法论。占位示例，更新中",
-        coverSrc: "/previews/article-preview-red-cabin.png",
+        slug: "personal-website-journey",
+        title: "个人网站复盘：从 Vibe Coding 到产品闭环",
+        summary:
+          "这次我把个人网站当成一个完整产品来做：先上线，再迭代；记录我怎么拆需求、怎么推进、踩过哪些坑。",
+        coverSrc: "/previews/personal-site-1.png",
+        date: "2026-03-31",
+        content:
+          "这次做个人网站，我没有把它当作品集页面来随便堆内容，而是当成一个小产品来推进。\n\n我先给自己定了一个很具体的目标：别人点进来，能快速看懂我是谁、我在做什么、有什么在持续更新。这个目标定住以后，很多事情就好判断了。比如第一版不追求花哨，先把首页、项目页、摄影集、联系页跑通；先保证能稳定打开，再谈精细优化。\n\n这段过程，和我在「Human-Drive 的实际感受」里写的一样：**工具很新，但流程本质没变，还是人在主导**。vibe coding 让我从「想一步做一步」慢慢变成「先想清楚，再描述清楚」。写代码确实更快了，但对需求表达和验收标准的要求反而更高。\n\n比如「留言功能上线」听起来只有一句话，真正落地时要回答很多问题：发完留言后用户看到什么？什么时候能看到自己那条？时间显示错了怎么处理？这些如果不提前想清楚，上线后就会全变成线上问题。这个阶段我也更理解了「debug 初体验」里那种感受：很多看起来是技术问题，拆开看其实是展示策略、环境认知和发布节奏的问题。\n\n过程里踩了不少坑，也学到一些实战经验。\n\n第一类坑是**体验一致性**。我遇到过页面首屏和实际交互不一致的情况，用户看到的和我以为交付的不一样。后来我会先从用户视角验收一遍，再去看代码。\n\n第二类坑是**数据展示可信度**。评论时间出现过异常字符串，技术上能解释，但用户不会管原因，只会觉得这个页面不可靠。我的处理原则也变得简单：宁可少展示，也不要展示明显错误的信息。\n\n第三类坑是**发布与环境认知**。有几次我以为改好了，其实没走到发布；也有几次线上更新了，本地却像没变。后来我给自己定了固定排查顺序：先看代码是否同步，再看是不是同一个预览进程，再看地址和端口对不对，最后才怀疑改动本身。\n\n这个版本里我补了评论区、评论数角标、状态筛选这些能力。它们不算大功能，但都在解决同一件事：让网站从「我在展示」变成「我和访客有来有回」。下一步我会按「接下来的项目目标」那条随记去推进——先把同一套核心能力在不同入口跑通，再逐端做轻量适配，不追求一次做到最完整。后面我也会继续按 **想法 -> 上线 -> 观察反馈 -> 再迭代** 的节奏往下做。",
       },
       {
         title: "如何维护一个可持续的灵感库",
@@ -462,9 +471,14 @@ const enCopy: SiteCopy = {
     ],
     articles: [
       {
-        title: "The Shortest Path from Idea to Launch",
-        summary: "A lightweight workflow from clarification to delivery. Placeholder example, updating.",
-        coverSrc: "/previews/article-preview-red-cabin.png",
+        slug: "personal-website-journey",
+        title: "Personal Site Retrospective: From Vibe Coding to Product Loops",
+        summary:
+          "Vibe-coding the site from idea to shipped—how I scoped it, ran the loops, hit the walls, and judged “done.”",
+        coverSrc: "/previews/personal-site-1.png",
+        date: "2026-03-31",
+        content:
+          "I treated this site as **the first product I fully shipped on my own cadence**: I wrote the requirements, and I also made the cuts. The starting point wasn’t “pick the coolest stack,” but **one sentence**—visitors should know who I am, what I’m building, and how to reach me. Everything else is a trade-off against that.\n\n**Vibe coding, for me, is “think a slice → describe it clearly → accept it.”** I chose **Next.js + TypeScript + Tailwind** and centralized bilingual copy and structure in **`site-content.ts`**—a **single source of truth** for content so I’m not hunting strings across the repo. It’s the same discipline as insisting on one authoritative PRD.\n\nFor v1 I only accepted one outcome: **it loads reliably on the public internet.** After Home, Projects, Gallery, and Contact were wired, I hooked up **Vercel**, the domain, and DNS—and for the first time I closed the loop from “a sentence in my head” to “a screen in someone else’s browser.” The win wasn’t memorizing an API; it was **proving the loop**.\n\nLater the roadmap forked: the ideas area had to carry **ideas, progress, and notes**, and “interactivity” had to become **post, render, moderate** in the real world. I wired **Cusdis** for comments, but the PM work kept going: trust in what we show, whether posting feels shaky, and how we guard third-party payloads—all **acceptance criteria**. That’s where the traps showed up: some bugs were really **first paint vs real use**; some “bad data” was a **presentation rule we never wrote**; sometimes **I thought I shipped** but production didn’t move—then I learned to ask **same code, same release, same environment** before doubting myself.\n\nOn the projects page I added **comment counts** and **status filters** because I needed a **tiny dashboard for myself**—where feedback is, what’s moving. Dev had its own tax: **hot reload** drama (bundler quirks, ports, local vs remote drift)—I treat it as **integration cost** and default to “align first, panic second.”\n\nAt this version I care about three checks: **did I state the problem clearly**, **does the visitor experience pass acceptance**, and **is “live” real delivery or self-congratulation**. This is my **PM-shaped field note** on shipping with vibe coding—I’ll keep iterating, and I’ll keep writing.",
       },
       {
         title: "Maintaining a Sustainable Idea Library",
