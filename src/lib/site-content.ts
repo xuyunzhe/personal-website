@@ -127,7 +127,7 @@ const zhCopy: SiteCopy = {
         content:
           "这次做个人网站，我给自己定的目标很简单：先把主页、项目页、摄影集和联系页跑起来，保证能稳定访问，不追求一步到位。\n\n技术栈我选了 Next.js App Router + TypeScript + Tailwind。最先做的是信息结构和导航，然后把中英文文案、想法和文章都收敛到 `site-content.ts`，这样每次改内容我都知道该去哪里改，维护成本低很多。\n\n开发过程里，我基本是「想清楚一段，就实现一段」。本地看效果没问题后就 `git commit` + `git push`，交给 Vercel 自动部署。域名这块我把 `xuyunzhe.site` 和 `www` 都接上，等 DNS 生效后，整个站点就正式可访问了。\n\n复盘下来，这个项目最大的收获不是技术难度，而是把「从想法到上线」这条链路完整走通。现在我的节奏就是：快速上线、小步迭代、持续记录，让网站跟着我的作品一起成长。",
         status: "launched",
-        date: "2026-03-20",
+        date: "2026-03-16",
         tech: "Next.js / TypeScript / Tailwind CSS / Vercel",
         link: "https://xuyunzhe.site",
         previewImages: [
@@ -153,7 +153,7 @@ const zhCopy: SiteCopy = {
         content:
           "**Idea：**在 Mac **菜单栏**里实时看到自己的**每秒收入**，在工位坐着的时候心情也许会好一点？\n+1 元 +1 元 +1 元 +1 元…\n\n第一次做**落地 App** 的尝试，首选 **Mac**：不需要先打通 iOS 端各种 App 限制，**成本很低**；开发完成后**只要打包即可**，整条流程都在视野范围之内，**踩坑的概率**应该比较小。\n\n**网站迭代计划：**如果要在网站上**上传自己的作品**供人下载，应该增加一个**作品发布 / 下载**的能力，直接贴百度云链接，**可太不体面了**…\n\n**3月30日：**薪资这种敏感数据还是更适合放在手表这种私密性较高的端口使用，下一步希望把现在的功能点再做删减，变为更简洁的 MVP 版本，然后上线到 Apple Watch 端。",
         status: "launched",
-        date: "2026-03-26",
+        date: "2026-03-21",
         previewImages: [
           {
             src: "/previews/salary-timer-preview-1.png",
@@ -178,7 +178,7 @@ const zhCopy: SiteCopy = {
         content:
           "第一个版本把从想法到上线的路径跑通了，但现在回看，产品还比较简陋：信息结构薄、交互层次少、视觉表达也偏工具化，不太像一个可以放心拿给用户体验和评价的软件。\n\n这次做 2.0，我想重点尝试前端层面的改动：把信息排版、视觉层级、按钮反馈和关键状态做得更清晰，让它看起来不再像一个内部小工具，而是一个可以直接展示给用户的应用。对我来说，这一版的目标是“先把观感和使用感拉到及格线以上”，再继续细化功能。\n\n另外一个重点是把安装下载体验补齐。相比只放一句说明，我希望用户能在页面里直接看到预览图、知道它现在长什么样，并且通过体验链接一键下载安装包。这样从“看到项目”到“真正装上试用”的路径就完整了，产品价值也更容易被感知。",
         status: "launched",
-        date: "2026-03-31",
+        date: "2026-03-30",
         previewImages: [
           {
             src: "/previews/salary-timer-2-0-preview-1.png",
@@ -207,7 +207,7 @@ const zhCopy: SiteCopy = {
         content:
           "接下来我想把同一套核心能力往多端扩展：先做 iOS 客户端，再做微信小程序，最后补上 Apple Watch 端，验证「同一条业务链路」在不同入口都能跑通。\n\n第一阶段会先把数据结构和接口约束定清楚，保证三端看的是同一份核心数据；第二阶段再针对每个端的交互习惯做轻量适配，不追求一次做到最完整。\n\n我的目标不是一次铺得很大，而是先把最小可用路径打通：能登录、能看到核心信息、能完成关键操作。只要这条链路稳定，后续再逐端做体验和性能优化。",
         status: "journal",
-        date: "2026-03-28",
+        date: "2026-03-25",
       },
       {
         slug: "ios-long-screenshot",
@@ -217,7 +217,7 @@ const zhCopy: SiteCopy = {
         content:
           "这个想法的核心是把「长截图」做成和普通截图一样顺手：不需要额外打开 App，不需要复杂步骤，最好能直接从控制中心一键唤起。\n\n第一版我会先聚焦一个最小可用场景：网页或聊天内容的连续截取 + 快速导出。只要把触发、拼接和保存这三步跑通，就已经有价值。\n\n后续再考虑细节体验，比如截取预览、局部重排、导出格式和隐私处理。目标不是功能堆满，而是让高频场景足够快、足够稳。",
         status: "idea",
-        date: "2026-03-30",
+        date: "2026-03-28",
       },
       {
         slug: "moments-copy-generator",
@@ -227,7 +227,7 @@ const zhCopy: SiteCopy = {
         content:
           "这个项目想解决我每次发朋友圈前最耗时的环节：选图、排 9 宫格、想文案。理想状态是我只负责把修好的图片上传，系统自动完成编排和文案建议。\n\n第一版会先做两个核心能力：一是根据图片内容和色调自动组合 9 格顺序；二是基于场景（旅行、生活、工作）生成多种语气的文案草稿，保证「不土」但又有辨识度。\n\n交互上我希望尽量简单：上传图片 -> 选择风格 -> 一键生成。后续再加手动微调能力，比如替换单张、锁定某一格位置、文案长度控制和 emoji 风格开关，让效率和个性化同时成立。\n\n最后一个关键问题是：怎么判断文案和图片搭配到底「土不土」。这里我希望关联抖音 / 小红书上优质博主的公开内容，提取表达风格、用词密度、情绪节奏和图文匹配关系，让 AI 持续学习并做识别评分，给出更接近真实平台审美的建议。",
         status: "in_progress",
-        date: "2026-03-29",
+        date: "2026-03-24",
       },
       {
         slug: "human-drive-vibe-coding",
@@ -236,7 +236,7 @@ const zhCopy: SiteCopy = {
         content:
           "最开始搞vibe coding尝试的时候，因为注册成本这些问题，没选Claude code，选了**Cursor**来做第一次尝试。\n\n第一感觉就是**“兴奋”**，用自然语言交互，能把各种想法变成能看到的项目。但搞了两个实操项目之后，我觉得**工作流程本质上其实没啥变化**。跟在公司里推动需求流程比，省了评审排期这些复杂的流程，就只要**文档交付然后查收**就行，但整个流程还是**人在主导**。\n\n相比于直接和研发进行沟通，我的**试错成本反而少了很多**，更能直观的感受到**每一个字符的思考&开发成本**，我的操作模式逐渐从**“想一步实现一步”**变成**“想清楚——描述清楚”**，果然**当家了才知道柴米油盐贵**。\n\n目前的两个项目还不够复杂，也没有涉及到前端样式美化的短板，处于**门外汉的阶段**，所以下次想要**尝试一些更复杂的idea**，看看是否有新的感受",
         status: "journal",
-        date: "2026-03-28",
+        date: "2026-03-22",
       },
       {
         slug: "personal-website-interactive",
@@ -246,7 +246,7 @@ const zhCopy: SiteCopy = {
         content:
           "目前站点主要是单向展示：项目、想法、摄影集。接下来希望加上评论或留言能力，让访客可以留下想法、提问或补充资料，形成轻量的交流。\n\n第一版我会优先考虑实现成本低、维护成本可控的方案：例如基于第三方评论服务，或简单的留言表单与适度审核。重点是先把「能对话」这条链路打通，再迭代体验与风控。\n\n目标和独立博客的留言区类似：不追求大而全的社区，而是给志同道合的人一个方便交流的入口。\n\n更新 01：现在评论的功能已经上线了，但是我觉得还是需要一些情绪价值，比如点赞的功能，下面继续把点赞的功能加上，等作品比较多了再增加「想要」的能力。",
         status: "launched",
-        date: "2026-03-31",
+        date: "2026-03-29",
       },
       {
         slug: "debug-first-experience",
@@ -404,7 +404,7 @@ const enCopy: SiteCopy = {
         content:
           "For this personal site, I set a simple goal: get four pages live first—Home, Projects, Gallery, and Contact—then improve in small steps instead of chasing perfection on day one.\n\nI chose Next.js App Router + TypeScript + Tailwind. I started with information architecture and navigation, then centralized bilingual copy, ideas, and articles in `site-content.ts`, which made content updates much easier to maintain.\n\nDuring development, my rhythm was straightforward: think through one chunk, implement one chunk. Once local checks looked good, I used `git commit` + `git push` and let Vercel deploy automatically. I also mapped both `xuyunzhe.site` and `www`, so the site became reachable after DNS propagation.\n\nLooking back, the biggest gain wasn’t technical complexity—it was completing the full loop from idea to launch. My current cadence is: ship fast, iterate steadily, and document along the way so the site grows together with my work.",
         status: "launched",
-        date: "2026-03-20",
+        date: "2026-03-16",
         tech: "Next.js / TypeScript / Tailwind CSS / Vercel",
         link: "https://xuyunzhe.site",
         previewImages: [
@@ -430,7 +430,7 @@ const enCopy: SiteCopy = {
         content:
           "**Idea:** see your **per-second income** live in the Mac **menu bar**—maybe it cheers you up a little at your desk?\n+1 +1 +1 +1…\n\nThis was my first try at shipping a **real app**, and I picked **macOS** first: no need to fight through all the iOS store and permission hoops up front, so the **cost stayed low**; once it worked, I could **just package and ship**, with the **whole pipeline in sight** and a **smaller chance of nasty surprises**.\n\n**Site roadmap:** if I want people to **download my work** from this website, I should add a **proper upload / distribution** flow, dropping **only a Baidu Netdisk link** feels **pretty undignified**…\n\n**Mar 30:** salary is sensitive data, so it likely fits better on a more private surface like a watch. Next step is to trim the current feature set into a leaner MVP and ship it on Apple Watch.",
         status: "launched",
-        date: "2026-03-26",
+        date: "2026-03-21",
         previewImages: [
           {
             src: "/previews/salary-timer-preview-1.png",
@@ -455,7 +455,7 @@ const enCopy: SiteCopy = {
         content:
           "V1 proved the idea-to-launch path, but in hindsight the product is still rough: thin information architecture, shallow interaction depth, and a visual layer that still feels like an internal tool rather than something I can confidently present to users.\n\nSo the 2.0 goal is not “add a few features,” but upgrade it into something demo-ready, explainable, and iteration-friendly. My approach is multi-agent collaboration: one agent for product decomposition (user scenarios, core flows, prioritization), one for interaction/UI outputs (key screens, feedback states, edge cases), and one for implementation constraints (technical boundaries, release cadence, risk list).\n\nThe value is that I no longer get a single “code answer”; I get aligned perspectives on why this direction, what to build first, and how to evaluate completion. The expected output is an optimized product plan, reviewable design drafts, and a software version that is genuinely ready to show to users.",
         status: "launched",
-        date: "2026-03-31",
+        date: "2026-03-30",
         previewImages: [
           {
             src: "/previews/salary-timer-2-0-preview-1.png",
@@ -484,7 +484,7 @@ const enCopy: SiteCopy = {
         content:
           "My next step is to expand the same core capability across multiple surfaces: iOS first, then a WeChat Mini Program, and finally Apple Watch, to prove the same business flow can run end to end everywhere.\n\nPhase one is to lock down shared data models and API contracts so all clients read from the same source of truth. Phase two is lightweight UX adaptation for each platform, without trying to perfect everything in one pass.\n\nThe goal isn’t to go wide all at once; it’s to unblock the minimum viable path first: sign in, view key info, and complete the critical action. Once that path is stable, I can iterate on experience and performance per platform.",
         status: "journal",
-        date: "2026-03-28",
+        date: "2026-03-25",
       },
       {
         slug: "ios-long-screenshot",
@@ -494,7 +494,7 @@ const enCopy: SiteCopy = {
         content:
           "The core idea is to make long screenshots as frictionless as regular screenshots: no extra app hopping, no complicated flow, ideally one tap from Control Center.\n\nFor v1, I would focus on a minimum useful path: continuous capture for web/chat content plus quick export. If trigger, stitch, and save work reliably, that already delivers real value.\n\nAfter that, I can iterate on details like preview, partial reorder, export formats, and privacy handling. The goal is not feature bloat, but speed and stability in high-frequency use cases.",
         status: "idea",
-        date: "2026-03-30",
+        date: "2026-03-28",
       },
       {
         slug: "moments-copy-generator",
@@ -504,7 +504,7 @@ const enCopy: SiteCopy = {
         content:
           "This project targets the most time-consuming part before posting to Moments: picking photos, arranging the 3x3 grid, and drafting copy. The ideal flow is simple: I upload edited images, and the system handles layout plus caption suggestions.\n\nV1 will focus on two core capabilities: auto-ordering a 9-grid based on image content/color rhythm, and generating caption drafts by scene (travel, daily life, work) with different tones that feel polished but not forced.\n\nInteraction should stay lightweight: upload -> choose style -> generate. Then I can add manual controls like replacing a single image, locking a slot, caption length tuning, and emoji style toggles for better speed and personalization.\n\nThe final key question is how to judge whether a caption-image combo feels “cringe” or actually good. I want this tied to high-quality public content from Douyin/Xiaohongshu creators, so AI can learn style signals (wording, emotional rhythm, visual-text fit) and output a more realistic quality score aligned with platform taste.",
         status: "in_progress",
-        date: "2026-03-29",
+        date: "2026-03-24",
       },
       {
         slug: "human-drive-vibe-coding",
@@ -514,7 +514,7 @@ const enCopy: SiteCopy = {
         content:
           "When I first tried vibe coding, signup friction and similar issues led me to skip Claude Code and use **Cursor** for the first run.\n\nMy first feeling was **“excitement”**: natural language could turn ideas into something you could see. After two hands-on projects, though, I think **the workflow itself hasn’t really changed**. Compared to pushing requirements at a company, I skip reviews and scheduling—mostly **write the spec and accept delivery**—but **humans still run the whole show**.\n\nVersus talking directly to engineers, my **trial-and-error cost actually dropped**, and I feel **the thinking and implementation cost behind every character** more clearly. My mode shifted from **“think one step, build one step”** to **“think it through—describe it clearly”**—**you only learn what groceries cost when you run the household**.\n\nThese two projects aren’t complex yet and barely touch front-end polish; I’m still **very much a beginner**, so next I want to **try a more ambitious idea** and see if anything feels different.",
         status: "journal",
-        date: "2026-03-28",
+        date: "2026-03-22",
       },
       {
         slug: "personal-website-interactive",
@@ -524,7 +524,7 @@ const enCopy: SiteCopy = {
         content:
           "The site is mostly one-way today: projects, ideas, and photography. Next I want to add comments or a lightweight guestbook so visitors can leave thoughts, questions, or references—small conversations instead of a broadcast.\n\nFor v1 I’ll favor approaches that are cheap to ship and maintain: a third-party comment embed, or a simple message form with light moderation. The goal is to unblock \"people can talk back\" first, then iterate on UX and safety.\n\nI’m not aiming for a full community; I want a convenient place for like-minded people to connect, similar to classic blog comments.\n\nUpdate 01: Comments are live now, but I still want more emotional payoff—likes, for example. Next I’ll add likes; once there’s more work on the site, I’ll add a “want it” signal too.",
         status: "launched",
-        date: "2026-03-31",
+        date: "2026-03-29",
       },
       {
         slug: "debug-first-experience",
