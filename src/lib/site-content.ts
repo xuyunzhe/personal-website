@@ -205,6 +205,16 @@ const zhCopy: SiteCopy = {
         status: "journal",
         date: "2026-03-28",
       },
+      {
+        slug: "personal-website-interactive",
+        title: "个人网站增加互动功能",
+        summary:
+          "应该增加一些评论，留言的功能，便于大家一起交流",
+        content:
+          "目前站点主要是单向展示：项目、想法、摄影集。接下来希望加上评论或留言能力，让访客可以留下想法、提问或补充资料，形成轻量的交流。\n\n第一版我会优先考虑实现成本低、维护成本可控的方案：例如基于第三方评论服务，或简单的留言表单与适度审核。重点是先把「能对话」这条链路打通，再迭代体验与风控。\n\n目标和独立博客的留言区类似：不追求大而全的社区，而是给志同道合的人一个方便交流的入口。",
+        status: "in_progress",
+        date: "2026-03-31",
+      },
     ],
     articles: [
       {
@@ -418,6 +428,16 @@ const enCopy: SiteCopy = {
           "When I first tried vibe coding, signup friction and similar issues led me to skip Claude Code and use **Cursor** for the first run.\n\nMy first feeling was **“excitement”**: natural language could turn ideas into something you could see. After two hands-on projects, though, I think **the workflow itself hasn’t really changed**. Compared to pushing requirements at a company, I skip reviews and scheduling—mostly **write the spec and accept delivery**—but **humans still run the whole show**.\n\nVersus talking directly to engineers, my **trial-and-error cost actually dropped**, and I feel **the thinking and implementation cost behind every character** more clearly. My mode shifted from **“think one step, build one step”** to **“think it through—describe it clearly”**—**you only learn what groceries cost when you run the household**.\n\nThese two projects aren’t complex yet and barely touch front-end polish; I’m still **very much a beginner**, so next I want to **try a more ambitious idea** and see if anything feels different.",
         status: "journal",
         date: "2026-03-28",
+      },
+      {
+        slug: "personal-website-interactive",
+        title: "Interactive Features for the Personal Site",
+        summary:
+          "Add comments or a guestbook so visitors can share ideas and discuss together.",
+        content:
+          "The site is mostly one-way today: projects, ideas, and photography. Next I want to add comments or a lightweight guestbook so visitors can leave thoughts, questions, or references—small conversations instead of a broadcast.\n\nFor v1 I’ll favor approaches that are cheap to ship and maintain: a third-party comment embed, or a simple message form with light moderation. The goal is to unblock \"people can talk back\" first, then iterate on UX and safety.\n\nI’m not aiming for a full community; I want a convenient place for like-minded people to connect, similar to classic blog comments.",
+        status: "in_progress",
+        date: "2026-03-31",
       },
     ],
     articles: [
