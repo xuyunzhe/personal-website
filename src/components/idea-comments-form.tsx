@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { Lang } from "@/lib/site-content";
 import { getCusdisLocale } from "@/lib/cusdis-locales";
 
@@ -13,17 +13,22 @@ type IdeaCommentsFormProps = {
 const NICK_MAX = 50;
 const CONTENT_MAX = 4000;
 
+/** 与 `next/dynamic` 的 `loading` 一致；表单本体用 `ssr: false` 避免 input hydration mismatch */
+export function IdeaCommentsFormSkeleton() {
+  return (
+    <div className="space-y-4" aria-busy="true" aria-hidden>
+      <div className="h-[42px] rounded-lg bg-zinc-100 dark:bg-zinc-800" />
+      <div className="h-[120px] rounded-lg bg-zinc-100 dark:bg-zinc-800" />
+      <div className="h-9 w-28 rounded-full bg-zinc-200 dark:bg-zinc-700" />
+    </div>
+  );
+}
+
 export default function IdeaCommentsForm({
   pageId,
   lang,
   ideaTitle,
 }: IdeaCommentsFormProps) {
-  /** 表单仅在客户端挂载后渲染，避免 input 等属性在 SSR 与首帧 hydration 不一致 */
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   const labels = getCusdisLocale(lang);
   const [nickname, setNickname] = useState("");
   const [content, setContent] = useState("");
@@ -76,20 +81,6 @@ export default function IdeaCommentsForm({
 
   const inputClass =
     "w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 outline-none ring-zinc-400 placeholder:text-zinc-400 focus:ring-2 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100 dark:placeholder:text-zinc-500";
-
-  if (!mounted) {
-    return (
-      <div
-        className="space-y-4"
-        aria-busy="true"
-        aria-label={lang === "zh" ? "表单加载中" : "Loading form"}
-      >
-        <div className="h-[42px] rounded-lg bg-zinc-100 dark:bg-zinc-800" />
-        <div className="h-[120px] rounded-lg bg-zinc-100 dark:bg-zinc-800" />
-        <div className="h-9 w-28 rounded-full bg-zinc-200 dark:bg-zinc-700" />
-      </div>
-    );
-  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">

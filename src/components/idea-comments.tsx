@@ -1,9 +1,15 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import type { Lang } from "@/lib/site-content";
 import { getCusdisLocale } from "@/lib/cusdis-locales";
 import IdeaCommentsFeed from "@/components/idea-comments-feed";
-import IdeaCommentsForm from "@/components/idea-comments-form";
+import { IdeaCommentsFormSkeleton } from "@/components/idea-comments-form";
+
+const IdeaCommentsForm = dynamic(
+  () => import("@/components/idea-comments-form"),
+  { ssr: false, loading: IdeaCommentsFormSkeleton },
+);
 
 type IdeaCommentsProps = {
   slug: string;

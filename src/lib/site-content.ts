@@ -211,7 +211,7 @@ const zhCopy: SiteCopy = {
         summary:
           "应该增加一些评论，留言的功能，便于大家一起交流",
         content:
-          "目前站点主要是单向展示：项目、想法、摄影集。接下来希望加上评论或留言能力，让访客可以留下想法、提问或补充资料，形成轻量的交流。\n\n第一版我会优先考虑实现成本低、维护成本可控的方案：例如基于第三方评论服务，或简单的留言表单与适度审核。重点是先把「能对话」这条链路打通，再迭代体验与风控。\n\n目标和独立博客的留言区类似：不追求大而全的社区，而是给志同道合的人一个方便交流的入口。",
+          "目前站点主要是单向展示：项目、想法、摄影集。接下来希望加上评论或留言能力，让访客可以留下想法、提问或补充资料，形成轻量的交流。\n\n第一版我会优先考虑实现成本低、维护成本可控的方案：例如基于第三方评论服务，或简单的留言表单与适度审核。重点是先把「能对话」这条链路打通，再迭代体验与风控。\n\n目标和独立博客的留言区类似：不追求大而全的社区，而是给志同道合的人一个方便交流的入口。\n\n更新 01：现在评论的功能已经上线了，但是我觉得还是需要一些情绪价值，比如点赞的功能，下面继续把点赞的功能加上，等作品比较多了再增加「想要」的能力。",
         status: "in_progress",
         date: "2026-03-31",
       },
@@ -435,7 +435,7 @@ const enCopy: SiteCopy = {
         summary:
           "Add comments or a guestbook so visitors can share ideas and discuss together.",
         content:
-          "The site is mostly one-way today: projects, ideas, and photography. Next I want to add comments or a lightweight guestbook so visitors can leave thoughts, questions, or references—small conversations instead of a broadcast.\n\nFor v1 I’ll favor approaches that are cheap to ship and maintain: a third-party comment embed, or a simple message form with light moderation. The goal is to unblock \"people can talk back\" first, then iterate on UX and safety.\n\nI’m not aiming for a full community; I want a convenient place for like-minded people to connect, similar to classic blog comments.",
+          "The site is mostly one-way today: projects, ideas, and photography. Next I want to add comments or a lightweight guestbook so visitors can leave thoughts, questions, or references—small conversations instead of a broadcast.\n\nFor v1 I’ll favor approaches that are cheap to ship and maintain: a third-party comment embed, or a simple message form with light moderation. The goal is to unblock \"people can talk back\" first, then iterate on UX and safety.\n\nI’m not aiming for a full community; I want a convenient place for like-minded people to connect, similar to classic blog comments.\n\nUpdate 01: Comments are live now, but I still want more emotional payoff—likes, for example. Next I’ll add likes; once there’s more work on the site, I’ll add a “want it” signal too.",
         status: "in_progress",
         date: "2026-03-31",
       },
