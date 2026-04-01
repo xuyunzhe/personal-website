@@ -392,7 +392,7 @@ const enCopy: SiteCopy = {
     name: "Hi, I'm XuYunZhe",
     role: "PM / Growth / Revenue / Experience / AI",
     intro:
-      "I switch between product thinking and indie building, turning fuzzy ideas into usable versions quickly, then refining them through continuous iteration.\n\nEvery page and shipped project here comes from my vibe coding practice. This site is where I document my learning process and all the ideas that need a place to live.\n\nProfessional focus: PM / Growth / Revenue / Experience / AI\nPersonal goal: Photographer (in progress).",
+      "Hi everyone, I'm XuYunZhe,\nHere you will see some projects I've launched, some of my ideas, small experiments, and some photos.\n\nEvery page and shipped project here comes from my vibe coding practice; I will continue to document my thinking and learning process, as well as those ideas that have nowhere else to go.\n\nAbout my professional info: PM / Growth / Revenue / Experience / AI\nAbout my other info: Photographer (wannabe)",
     primaryCta: "View Projects",
     secondaryCta: "Get In Touch",
   },
@@ -404,7 +404,7 @@ const enCopy: SiteCopy = {
   projects: {
     title: "Projects & Articles",
     intro:
-      "This section tracks some of my ideas and their delivery progress, and I document selected implementation journeys as articles.",
+      "Documenting some of my ideas and their implementation progress, and I will summarize some of the implementation processes into articles.",
     ideas: [
       {
         slug: "personal-website",
@@ -653,8 +653,8 @@ const enCopy: SiteCopy = {
     ],
   },
   homeArticleLead: {
-    line1: "A thinker who won't just go along | INTP",
-    line2: "I like getting to the bottom of things—and I lean toward structure, clever ideas, and things made with care.",
+    line1: "An independent thinker | INTP",
+    line2: "I like to think problems through, and also prefer things with structure, ingenuity, and aesthetic appeal.",
   },
   contact: {
     title: "Contact",
