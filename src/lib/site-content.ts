@@ -275,7 +275,7 @@ const zhCopy: SiteCopy = {
           "每天在小红书上看大家的vibecoding作品太麻烦，垃圾信息太多，希望做一个每天自动收集和推送vibecoding作品与灵感的agent",
         content:
           "想要做一些agent尝试，每天都在小红书上看大家的vibecoding作品，但是现在觉得收集信息太麻烦了，垃圾信息太多。为什么AI时代还要我自己收集信息找灵感？希望这次做一个每天自动收集vibecoding作品和提供灵感的软件，每天自动给我推送。\n\n核心需求很简单：自动筛选高质量的vibe coding作品，每天定时推送，帮我节省找灵感的时间，让我专注在真正的创作上。",
-        status: "idea",
+        status: "in_progress",
         date: "2026-04-01",
       },
     ],
@@ -563,7 +563,7 @@ const enCopy: SiteCopy = {
           "Browsing Xiaohongshu for vibe coding works every day is tedious with too much noise—want an agent that automatically collects and pushes vibe coding works and inspirations daily.",
         content:
           "Want to try some agent experiments. I browse Xiaohongshu every day for people's vibe coding works, but collecting information is too tedious now with too much noise. Why do I still have to collect information and find inspiration manually in the AI era? Hope to build a software that automatically collects vibe coding works and provides inspirations every day, pushing them to me automatically.\n\nThe core need is simple: automatically filter high-quality vibe coding works, push them on a daily schedule, save me time finding inspirations, and let me focus on actual creation.",
-        status: "idea",
+        status: "in_progress",
         date: "2026-04-01",
       },
     ],
