@@ -120,6 +120,16 @@ const zhCopy: SiteCopy = {
     intro: "记录了我的一些idea，以及落地进度，会把一些落地的过程整理为文章记录下来。",
     ideas: [
       {
+        slug: "recreate-assessment-with-ai",
+        title: "用 AI 逆向复刻测试类产品",
+        summary:
+          "想复刻一个类似 MBTI 的测试，核心逻辑能否让 AI 自主全网搜集、推理并完成代码实现？",
+        content:
+          "最近在思考：如果我想复刻一个类似 MBTI（或 SBTI 等）的测试类产品，其核心的问卷逻辑、计分规则和结果判定，是否还需要我手动去梳理和编写？\n\n我的设想是：既然这类测试的原理在网上有大量公开信息，能否直接让 AI 充当 Agent，自主去全网搜集相关的百科、资料和讨论，然后通过大模型强大的推理能力，自动逆向还原出整套计分逻辑和判定树。\n\n甚至更进一步，不仅是推理逻辑，连最终的前端问卷页面、背后的算分代码，也全部由 AI 基于推理出的规则直接生成。在这个过程中，人类只负责提出目标（“帮我复刻一个某某测试”），而 AI 完成从“知识检索 -> 逻辑逆向 -> 代码实现”的完整闭环。如果能跑通，这将是 AI 替代传统业务逻辑梳理的一个极佳尝试。",
+        status: "idea",
+        date: "2026-04-10",
+      },
+      {
         slug: "personal-website",
         title: "创建个人网站",
         summary:
@@ -406,6 +416,16 @@ const enCopy: SiteCopy = {
     intro:
       "Documenting some of my ideas and their implementation progress, and I will summarize some of the implementation processes into articles.",
     ideas: [
+      {
+        slug: "recreate-assessment-with-ai",
+        title: "Reverse-Engineering Assessments with AI",
+        summary:
+          "Can an AI agent gather public data, infer the scoring logic, and code a complete clone of an assessment tool entirely on its own?",
+        content:
+          "I've been thinking: if I want to recreate an assessment product like MBTI (or SBTI, etc.), do I still need to manually map out and code the questionnaire logic, scoring rules, and result algorithms?\n\nMy hypothesis: Since the principles of these tests are widely available online, could I just prompt an AI Agent to autonomously crawl wikis, papers, and discussions, and use LLM reasoning to reverse-engineer the entire scoring matrix and decision tree?\n\nTaking it a step further—not just inferring the logic, but having the AI directly generate the frontend questionnaire and backend calculation code based on those inferred rules. In this workflow, the human only sets the goal ('clone this test for me'), while AI handles the full loop of 'knowledge retrieval -> logic reverse-engineering -> code implementation'. If this works, it would be a fantastic use case for AI replacing traditional business logic mapping.",
+        status: "idea",
+        date: "2026-04-10",
+      },
       {
         slug: "personal-website",
         title: "Building a Personal Website",
