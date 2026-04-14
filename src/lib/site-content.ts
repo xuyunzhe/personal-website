@@ -120,6 +120,16 @@ const zhCopy: SiteCopy = {
     intro: "记录了我的一些idea，以及落地进度，会把一些落地的过程整理为文章记录下来。",
     ideas: [
       {
+        slug: "claude-managed-agents-thoughts",
+        title: "Claude Managed Agents 随想：Harness 的托管化",
+        summary:
+          "Anthropic 推出的新服务本质上是将 Agent Harness 外包给了 AI，解决了工作中 Prompt 调优不可量化的巨大成本。",
+        content:
+          "Anthropic 于 2026 年 4 月 8 日正式推出 **Claude Managed Agents**。\n\n其核心是帮开发者零基建、快速部署生产级 AI Agent，把 Agent Harness 变成了开箱即用的云服务。换成人话来说，就相当于**省略了人工配置画布、调优 Prompt、配置 Skill 的所有成本，全部由 AI 托管**。本质上，就是根据我的一句话诉求，直接搭建出满足条件的 Agent。\n\n可以说是解决了我在工作中的大部分成本。在实际业务中，处理 Agent 最困难、时间成本最高的内容，就是对 Prompt 进行优化。优化的效果与风险均不可量化，往往只能 T+1 进行 By Case 的回收与调整。\n\n现在的流程发生了根本变化：\n* **传统 Agent 开发**：人设计流程 → 写 Prompt → 配工具 → 搭 Harness → 测试调优\n* **Claude Managed Agents**：一句话需求 → AI 自动生成完整 Agent → 自动运行交付\n\n本质上，**这是将 Harness 外包给了 Agent**。\n\n---\n\n**补充一下 Harness 的逻辑**\n\n官方公式：`Agent = Model + Harness`\n* **Model**：提供推理、生成等基础智能；\n* **Harness**：Prompt 治理 + 工具与 MCP + 记忆与上下文 + 任务编排 + 权限与安全 + 监控与评测。\n\n**Harness 与 Prompt Engineering 的区别：**\n* **Prompt Engineering**：聚焦“怎么问”，解决单轮或单任务的指令优化；\n* **Harness Engineering**：聚焦“怎么跑”，解决多轮、长周期、生产级的稳定运行与治理问题。",
+        status: "journal",
+        date: "2026-04-14",
+      },
+      {
         slug: "recreate-assessment-with-ai",
         title: "用 AI 逆向复刻测试类产品",
         summary:
@@ -416,6 +426,16 @@ const enCopy: SiteCopy = {
     intro:
       "Documenting some of my ideas and their implementation progress, and I will summarize some of the implementation processes into articles.",
     ideas: [
+      {
+        slug: "claude-managed-agents-thoughts",
+        title: "Thoughts on Claude Managed Agents: Outsourcing the Harness",
+        summary:
+          "Anthropic's new service essentially outsources the Agent Harness to AI, solving the immense, unquantifiable cost of manual Prompt tuning at work.",
+        content:
+          "On April 8, 2026, Anthropic officially launched **Claude Managed Agents**.\n\nThe core value is helping developers deploy production-grade AI Agents rapidly with zero infrastructure, turning the Agent Harness into an out-of-the-box cloud service. In plain English, this **eliminates the entire cost of manually configuring canvases, tuning Prompts, and setting up Skills—everything is fully managed by AI**. Essentially, it builds an Agent that meets my conditions based on a single sentence request.\n\nThis solves a massive portion of my work costs. In practice, the hardest and most time-consuming part of dealing with Agents is Prompt optimization. The effects and risks of these optimizations are unquantifiable; we often have to rely on T+1 case-by-case reviews and adjustments.\n\nThe workflow has fundamentally changed:\n* **Traditional Agent Development**: Human designs flow → Writes Prompt → Configures Tools → Builds Harness → Tests & Tunes\n* **Claude Managed Agents**: One-sentence requirement → AI automatically generates complete Agent → Runs and delivers\n\nEssentially, **this is outsourcing the Harness to the Agent itself**.\n\n---\n\n**A Quick Note on the Logic of Harness**\n\nThe official formula: `Agent = Model + Harness`\n* **Model**: Provides foundational intelligence like reasoning and generation;\n* **Harness**: Prompt governance + Tools and MCP + Memory and context + Task orchestration + Permissions and security + Monitoring and evaluation.\n\n**The difference between Harness and Prompt Engineering:**\n* **Prompt Engineering**: Focuses on \"how to ask\", solving single-turn or single-task instruction optimization;\n* **Harness Engineering**: Focuses on \"how to run\", solving multi-turn, long-cycle, production-grade stable execution and governance.",
+        status: "journal",
+        date: "2026-04-14",
+      },
       {
         slug: "recreate-assessment-with-ai",
         title: "Reverse-Engineering Assessments with AI",
